@@ -1,0 +1,79 @@
+featureType,featureId,name,shop,brand,hours,latitude,longitude
+node,293632937,Safeway,supermarket,Safeway,,37.7767382,-122.3942265
+node,332787306,Calmart,supermarket,,,37.7862650,-122.4528047
+node,389404007,Whole Foods Market,supermarket,Whole Foods Market,,37.7811499,-122.3997789
+node,416779714,Marina Supermarket,supermarket,,,37.8000223,-122.4416127
+node,459504817,Mollie Stone's,supermarket,,,37.7606657,-122.4365592
+node,612767884,JW & L Market,supermarket,,,37.7986741,-122.4090015
+node,732040844,Safeway,supermarket,Safeway,,37.8064387,-122.4128900
+node,761762694,Trader Joe's,supermarket,Trader Joe's,,37.7266010,-122.4762084
+node,903709628,One $ Store,supermarket,,,37.7632581,-122.4196733
+node,904141569,Starco Mart,supermarket,,,37.7797642,-122.4099802
+node,1002186270,Whole Foods Market,supermarket,Whole Foods Market,,37.7900899,-122.4234142
+node,1205120785,Super Save,supermarket,,,37.7367631,-122.3897193
+node,1213823254,Trader Joe's,supermarket,Trader Joe's,,37.7709988,-122.4077368
+node,1221413899,Walgreens,supermarket,,,37.7418624,-122.3871928
+node,1229920646,Pho Tot,supermarket,,,37.7168741,-122.4415313
+node,1350484814,Le Beau Market,supermarket,,,37.7928844,-122.4162342
+node,1366261149,Mi Tierra,supermarket,,,37.7796231,-122.4075474
+node,1478520948,Real Food Company,supermarket,,,37.7965466,-122.4217072
+node,1706618868,Lucky,supermarket,Lucky,,37.7760091,-122.4460620
+node,1924130352,Whole Foods Market,supermarket,Whole Foods Market,,37.7237981,-122.4546813
+node,2047570603,Casa Guadalupe,supermarket,,,37.7504228,-122.4181255
+node,2047570604,Casa Guadalupe,supermarket,,,37.7492129,-122.4180336
+node,2050131394,Valencia Farmers Market,supermarket,,,37.7522423,-122.4205203
+node,2057494891,Pacific Super,supermarket,,,37.7119724,-122.4528163
+node,2059226347,San Bruno Supermarket,supermarket,,,37.7303902,-122.4051055
+node,2069159598,Valencia Whole Foods,supermarket,,,37.7570365,-122.4209796
+node,2078333126,Buddies Market,supermarket,,,37.7346227,-122.4337115
+node,2130264969,Trader Joe's,supermarket,Trader Joe's,,37.8054807,-122.4137896
+node,2184767720,Nijiya Market,supermarket,,,37.7852546,-122.4310324
+node,2184790554,Trader Joe's,supermarket,Trader Joe's,,37.7907686,-122.4179305
+node,2220082604,New Russian Hill Market,supermarket,,,37.7959769,-122.4149018
+node,2303037496,Buyer's Best Friend Wholesale & Market,supermarket,,,37.7949012,-122.3928736
+node,2338835471,Green Earth,supermarket,,,37.7777160,-122.4381600
+node,2430288254,Abes Market,supermarket,,,37.7729450,-122.4304920
+node,2479681841,Whole Foods Market,supermarket,Whole Foods Market,,37.7687435,-122.4270651
+node,2641796593,Smart & Final,supermarket,Smart & Final,,37.7415785,-122.4053683
+node,2667574537,Five Markets,supermarket,,,37.7529431,-122.4087167
+node,2693004231,Frank's Liquors,supermarket,,,37.7694214,-122.4505453
+node,2698387925,Golden Veggie Market,supermarket,,,37.7902045,-122.4207829
+node,3148123214,Pang Kee Bargain Market,supermarket,,,37.7979062,-122.4085421
+node,3148123215,"Sun Kau Shing Co., Inc.",supermarket,,,37.7984110,-122.4086385
+node,3186114966,Wharf Liquors & Deli,supermarket,,,37.8076369,-122.4155301
+node,3376135508,Sutter Fine Foods,supermarket,,,37.7884234,-122.4165679
+node,3524458050,6001 California Market (Appel & Dietrich),supermarket,,,37.7839057,-122.4819672
+node,3564521986,Good Luck Market,supermarket,,,37.7427662,-122.4792960
+node,3641710571,Harvest Urban Market,supermarket,,,37.7764867,-122.4116366
+node,3811475327,Bi-Rite Market,supermarket,,,37.7614046,-122.4247040
+node,3850073315,Gus's Community Market,supermarket,,,37.7639653,-122.4127878
+node,3857827557,Rubin's Market,supermarket,,,37.7494370,-122.4136230
+node,3969574176,Kiki Supermarket,supermarket,,,37.7955290,-122.4100247
+node,4017211397,Dong Hing Supermarket,supermarket,,,37.7969706,-122.4083521
+node,4017220288,J & L Vegi Supermarket,supermarket,,,37.7970928,-122.4086681
+node,4173551409,Local Mission Market,supermarket,,,37.7548560,-122.4123130
+node,4173566690,Casa Maria,supermarket,,,37.7538710,-122.4162680
+node,4218361464,City Discount Meat & Grocery Market,supermarket,,,37.7603364,-122.4194100
+node,4485989999,The Market,supermarket,,,37.7765597,-122.4168330
+node,4548821705,Mi Pueblito Market,supermarket,,,37.7528358,-122.4183448
+node,4564626093,Grocery Outlet,supermarket,Grocery Outlet,,37.7797491,-122.4876360
+node,4625108173,Jackson Market,supermarket,,,37.7948993,-122.4149473
+node,4630226706,New California Market,supermarket,,,37.7840258,-122.4788199
+node,4631876719,Cool Super Discount Market,supermarket,,,37.7840482,-122.4107866
+node,4631891265,Right Way,supermarket,,,37.7857309,-122.4145173
+node,4637102851,Nob Hills Finest Market,supermarket,,,37.7929179,-122.4163322
+node,4637210183,J H Grocery and Liquor,supermarket,,,37.7944737,-122.4182553
+node,4637773272,Daldas Market,supermarket,,,37.7842393,-122.4111301
+node,4637773279,Town and County Market,supermarket,,,37.7879975,-122.4118912
+node,4661543003,Whole Foods Market,supermarket,Whole Foods Market,,37.7643298,-122.4027236
+node,4693634740,Gus's Community Market,supermarket,,,37.7742721,-122.3914120
+node,4704557447,Trader Joe's,supermarket,Trader Joe's,,37.7853980,-122.4056288
+node,4852448016,Falletti Foods,supermarket,,,37.7730913,-122.4389783
+node,4925653001,,supermarket,,,37.7935837,-122.4110435
+node,6469314085,Woodlands Market,supermarket,,,37.7891143,-122.3918140
+node,8140177640,Luke's Local,supermarket,,,37.7972287,-122.4352703
+node,8663867589,H Mart,supermarket,H Mart,,37.7103977,-122.4676500
+node,8713627653,,supermarket,,,37.7528609,-122.4104106
+node,9023293126,J & P Bait,supermarket,,,37.8091295,-122.4187761
+node,9147266528,Gus's Community Market,supermarket,,,37.7528381,-122.5035845
+node,9581957721,Whole Foods Market,supermarket,Whole Foods Market,,37.7788891,-122.4141120
