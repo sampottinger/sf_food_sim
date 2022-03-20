@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>SF Food Desert Simulation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./viz.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>SF Food Desert Simulation</h1>
+      <div class="intro">
+        TKTK
+      </div>
+    </header>
+    <section id="toolSection">
+      <div id="displayArea" class="tool-area">
+        <canvas id="vizCanvas" width="625" height="520"></canvas>
+      </div>
+      <div id="controlArea" class="tool-area">
+        <div class="subcontrol">
+          <div class="main-label">Construct new: </div>
+          <div>Left click to add supermarket and right click to add fast food.</div>
+        </div>
+        <div class="subcontrol">
+          <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
+          <div><input class="slider" type="range" min="1" max="6" value="1.5" step="0.1" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
+          <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket?</div>
+        </div>
+        <div class="subcontrol">
+          <div class="main-label">Summary of results:</div>
+          <div class="summary-display" id="supermarketSummary">
+            <div class="numeric-display" id="supermarketNumericDisplay"></div>
+            <div class="bar-display" id="supermarketBarDisplay"></div>
+          </div>
+          <div class="summary-display" id="fastFoodSummary">
+            <div class="numeric-display" id="fastFoodNumericDisplay"></div>
+            <div class="bar-display" id="fastFoodBarDisplay"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      TKTK
+    </footer>
+  </body>
+
+  <script type="text/javascript" src="./jstat.min.js"></script>
+  <script type="text/javascript" src="./proj4js.js"></script>
+  <script type="text/javascript" src="./papaparse.min.js"></script>
+  <script type="text/javascript" src="./geo_util.js"></script>
+  <script type="text/javascript" src="./viz.js"></script>
+
+</html>

@@ -1,0 +1,89 @@
+header {
+  border-bottom: 1px solid #C0C0C0;
+}
+
+html {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 200;
+  font-size: 17px;
+  background-color: white;
+  color: #333;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+.slider {
+  width: 80%;
+}
+
+.subcontrol {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.subcontrol .main-label {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.summary-display {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.summary-display .bar-display {
+  height: 10px;
+  width: 1px;
+}
+
+#displayArea {
+  text-align: center;
+}
+
+#fastFoodSummary {
+  color: #33a02c;
+}
+
+#fastFoodSummary .bar-display {
+  background-color: #33a02c;
+}
+
+#supermarketSummary {
+  color: #1f78b4;
+}
+
+#supermarketSummary .bar-display {
+  background-color: #1f78b4;
+}
+
+#toolSection {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #C0C0C0;
+}
+
+@media (max-width: 1000px) {
+  #controlArea {
+    border-top: 1px dotted #C0C0C0;
+    padding-top: 20px;
+  }
+
+  #toolSection {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1000px) {
+  #toolSection {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 60% 40%;
+  }
+
+  #controlArea {
+    border-left: 1px dotted #C0C0C0;
+    padding-left: 10px;
+  }
+}
