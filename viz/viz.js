@@ -82,6 +82,20 @@ class EntitySet {
     return self._fastFoods;
   }
 
+  addFastFoodAt(longitude, latitude) {
+    const self = this;
+
+    self._fastFoods.push(new Entity(
+      longitude,
+      latitude,
+      "fastFood",
+      "static",
+      false
+    ));
+
+    self._setAllHomesUpdating();
+  }
+
   getSupermarkets() {
     const self = this;
     return self._supermarkets;
@@ -209,6 +223,11 @@ class Presenter {
       self._onLeftClick(event);
       event.preventDefault();
     });
+
+    self._canvas.addEventListener('contextmenu', (event) => {
+      self._onRightClick(event);
+      event.preventDefault();
+    });
   }
 
   draw() {
@@ -334,6 +353,16 @@ class Presenter {
     const latLngSpace = rawProjectReverse(metersSpace["y"], metersSpace["x"]);
 
     self._entitySet.addSupermarketAt(latLngSpace["x"], latLngSpace["y"]);
+  }
+
+  _onRightClick(event) {
+    const self = this;
+
+    const mousePosition = self._getMousePos(event);
+    const metersSpace = translateScalePointReverse(mousePosition);
+    const latLngSpace = rawProjectReverse(metersSpace["y"], metersSpace["x"]);
+
+    self._entitySet.addFastFoodAt(latLngSpace["x"], latLngSpace["y"]);
   }
 
   _getMousePos(event) {
