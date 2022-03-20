@@ -6,8 +6,8 @@ class Entity {
     self._latitude = latitude;
 
     const projected = project(longitude, latitude);
-    self._x = projected.x;
-    self._y = projected.y;
+    self._x = projected["x"];
+    self._y = projected["y"];
 
     self._type = type;
     self._state = state;
@@ -87,6 +87,20 @@ class EntitySet {
     return self._supermarkets;
   }
 
+  addSupermarketAt(longitude, latitude) {
+    const self = this;
+
+    self._supermarkets.push(new Entity(
+      longitude,
+      latitude,
+      "supermarket",
+      "static",
+      false
+    ));
+
+    self._setAllHomesUpdating();
+  }
+
   updateHomes() {
     const self = this;
     const waiting = self._homes.filter((x) => x.getIsUpdating());
@@ -98,7 +112,7 @@ class EntitySet {
   setDistanceDisparity(distanceDisparity) {
     const self = this;
     self._allowedDistanceDisparity = distanceDisparity;
-    const waiting = self._homes.forEach((x) => {x.setUpdating(true);});
+    self._setAllHomesUpdating();
   }
 
   _updateHome(target) {
@@ -112,20 +126,38 @@ class EntitySet {
       (supermarket) => self._findDistance(target, supermarket)
     );
 
-    const supermarketMin = Math.min(...supermarketDistances);
-    const fastFoodMin = Math.min(...fastFoodDistances);
-    const disparity = supermarketMin / fastFoodMin;
-    const useSupermarket = disparity < self._allowedDistanceDisparity;
-    const newState = useSupermarket ? "supermarket" : "fastFood";
+    const supermarketMiles = Math.min(...supermarketDistances);
+    const fastFoodMiles = Math.min(...fastFoodDistances);
+
+    const distanceToFood = Math.min(supermarketMiles, fastFoodMiles);
+    let newState = null;
+    if (distanceToFood > 1) {
+      newState = "unknown";
+    } else {
+      const disparity = supermarketMiles / fastFoodMiles;
+      const supermarketByRatio = disparity < self._allowedDistanceDisparity;
+      const supermarketByToll = Math.abs(
+        supermarketMiles - fastFoodMiles
+      ) < 0.1;
+      const useSupermarket = supermarketByToll || supermarketByRatio;
+      newState = useSupermarket ? "supermarket" : "fastFood";
+    }
+
     target.setState(newState);
     target.setUpdating(false);
   }
 
   _findDistance(a, b) {
     const self = this;
-    const xDiff = a.getX() - b.getX();
-    const yDiff = a.getY() - b.getY();
-    return Math.sqrt(Math.pow(xDiff + yDiff, 2));
+    return findDistanceMiles(
+      {"x": a.getLongitude(), "y": a.getLatitude()},
+      {"x": b.getLongitude(), "y": b.getLatitude()}
+    );
+  }
+
+  _setAllHomesUpdating() {
+    const self = this;
+    self._homes.forEach((x) => {x.setUpdating(true);});
   }
 
 }
@@ -151,11 +183,19 @@ class Presenter {
     self._supermarketBarDisplay = document.getElementById(
       "supermarketBarDisplay"
     );
+
     self._fastFoodNumericDisplay = document.getElementById(
       "fastFoodNumericDisplay"
     );
     self._fastFoodBarDisplay = document.getElementById(
       "fastFoodBarDisplay"
+    );
+
+    self._unknownNumericDisplay = document.getElementById(
+      "unknownNumericDisplay"
+    );
+    self._unknownBarDisplay = document.getElementById(
+      "unknownBarDisplay"
     );
 
     self._allowedTolleranceSlider.addEventListener(
@@ -164,6 +204,11 @@ class Presenter {
     );
 
     self._onTolleranceChange();
+
+    self._canvas.addEventListener('click', (event) => {
+      self._onLeftClick(event);
+      event.preventDefault();
+    });
   }
 
   draw() {
@@ -173,7 +218,7 @@ class Presenter {
 
     self._entitySet.getHomes().forEach((home) => {
       const color = {
-        "unknown": "#C0C0C0",
+        "unknown": "#EAEAEA",
         "supermarket": "#A6CEE3",
         "fastFood": "#B2DF8A"
       }[home.getState()];
@@ -232,8 +277,8 @@ class Presenter {
   _updateTolleranceDisplay() {
     const self = this;
     const allowed = Math.round(
-      (self._allowedTolleranceSlider.value - 1) * 10
-    ) * 10;
+      (self._allowedTolleranceSlider.value - 1) * 20
+    ) / 20 * 100;
     const isPos = allowed > 0;
     const allowedStr = isPos ? "+" + allowed : allowed;
     self._allowedTolleranceDisplay.innerHTML = allowedStr + "%";
@@ -244,29 +289,60 @@ class Presenter {
 
     const homes = self._entitySet.getHomes();
     const countTotal = homes.length;
-    const homeCountFastFood = homes.filter(
-      (home) => home.getState() === "fastFood"
-    ).length;
-    const homeCountSupermarket = countTotal - homeCountFastFood;
 
+    const counts = {
+      "unknown": 0,
+      "fastFood": 0,
+      "supermarket": 0
+    };
+    const homeCountFastFood = homes.forEach((home) => {
+      counts[home.getState()]++;
+    });
+
+    const percentUnknown = Math.round(
+      counts["unknown"] / countTotal * 100
+    );
     const percentSuperMarket = Math.round(
-      homeCountSupermarket / countTotal * 100
+      counts["supermarket"] / countTotal * 100
     );
-    const percentFastFood = Math.floor(
-      homeCountFastFood / countTotal * 100
+    const percentFastFood = Math.round(
+      counts["fastFood"] / countTotal * 100
     );
 
+    const unknownStr = percentUnknown + "% more than 1 mile from either";
     const supermarketStr = percentSuperMarket + "% choose supermarket";
     const fastFoodStr = percentFastFood + "% choose fast food";
 
+    self._unknownNumericDisplay.innerHTML = unknownStr;
     self._supermarketNumericDisplay.innerHTML = supermarketStr;
     self._fastFoodNumericDisplay.innerHTML = fastFoodStr;
 
+    const unknownWidth = (percentUnknown * 2) + "px";
     const supermarketWidth = (percentSuperMarket * 2) + "px";
     const fastFoodWidth = (percentFastFood * 2) + "px";
 
+    self._unknownBarDisplay.style.width = unknownWidth;
     self._supermarketBarDisplay.style.width = supermarketWidth;
     self._fastFoodBarDisplay.style.width = fastFoodWidth;
+  }
+
+  _onLeftClick(event) {
+    const self = this;
+
+    const mousePosition = self._getMousePos(event);
+    const metersSpace = translateScalePointReverse(mousePosition);
+    const latLngSpace = rawProjectReverse(metersSpace["y"], metersSpace["x"]);
+
+    self._entitySet.addSupermarketAt(latLngSpace["x"], latLngSpace["y"]);
+  }
+
+  _getMousePos(event) {
+    const self = this;
+    const rect = self._canvas.getBoundingClientRect();
+    return {
+      "x": event.clientX - rect.left,
+      "y": event.clientY - rect.top
+    };
   }
 
 }

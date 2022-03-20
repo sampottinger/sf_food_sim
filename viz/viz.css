@@ -58,6 +58,14 @@ h1 {
   background-color: #1f78b4;
 }
 
+#unknownSummary {
+  color: #A0A0A0;
+}
+
+#unknownSummary .bar-display {
+  background-color: #C0C0C0;
+}
+
 #toolSection {
   padding-top: 20px;
   padding-bottom: 20px;
