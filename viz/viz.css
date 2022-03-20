@@ -1,3 +1,8 @@
+footer {
+  font-size: 13px;
+  padding-top: 10px;
+}
+
 header {
   border-bottom: 1px solid #C0C0C0;
 }
@@ -8,10 +13,16 @@ html {
   font-size: 17px;
   background-color: white;
   color: #333;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 h1 {
   margin-bottom: 5px;
+}
+
+.intro {
+  padding-bottom: 10px;
 }
 
 .slider {
