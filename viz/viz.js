@@ -1,182 +1,3 @@
-class Entity {
-
-  constructor(longitude, latitude, type, state, updating) {
-    const self = this;
-    self._longitude = longitude;
-    self._latitude = latitude;
-
-    const projected = project(longitude, latitude);
-    self._x = projected["x"];
-    self._y = projected["y"];
-
-    self._type = type;
-    self._state = state;
-    self._updating = updating;
-  }
-
-  getLongitude() {
-    const self = this;
-    return self._longitude;
-  }
-
-  getLatitude() {
-    const self = this;
-    return self._latitude;
-  }
-
-  getX() {
-    const self = this;
-    return self._x;
-  }
-
-  getY() {
-    const self = this;
-    return self._y;
-  }
-
-  getType() {
-    const self = this;
-    return self._type;
-  }
-
-  getState() {
-    const self = this;
-    return self._state;
-  }
-
-  setState(newState) {
-    const self = this;
-    self._state = newState;
-  }
-
-  getIsUpdating() {
-    const self = this;
-    return self._updating;
-  }
-
-  setUpdating(updating) {
-    const self = this;
-    self._updating = updating;
-  }
-
-}
-
-
-class EntitySet {
-
-  constructor(homes, fastFoods, supermarkets) {
-    const self = this;
-    self._homes = homes;
-    self._fastFoods = fastFoods;
-    self._supermarkets = supermarkets;
-    self._allowedDistanceDisparity = 1;
-  }
-
-  getHomes() {
-    const self = this;
-    return self._homes;
-  }
-
-  getFastFoods() {
-    const self = this;
-    return self._fastFoods;
-  }
-
-  addFastFoodAt(longitude, latitude) {
-    const self = this;
-
-    self._fastFoods.push(new Entity(
-      longitude,
-      latitude,
-      "fastFood",
-      "static",
-      false
-    ));
-
-    self._setAllHomesUpdating();
-  }
-
-  getSupermarkets() {
-    const self = this;
-    return self._supermarkets;
-  }
-
-  addSupermarketAt(longitude, latitude) {
-    const self = this;
-
-    self._supermarkets.push(new Entity(
-      longitude,
-      latitude,
-      "supermarket",
-      "static",
-      false
-    ));
-
-    self._setAllHomesUpdating();
-  }
-
-  updateHomes() {
-    const self = this;
-    const waiting = self._homes.filter((x) => x.getIsUpdating());
-    const toUpdate = waiting.slice(0, 100);
-    toUpdate.forEach((home) => { self._updateHome(home); });
-    return toUpdate.length > 0;
-  }
-
-  setDistanceDisparity(distanceDisparity) {
-    const self = this;
-    self._allowedDistanceDisparity = distanceDisparity;
-    self._setAllHomesUpdating();
-  }
-
-  _updateHome(target) {
-    const self = this;
-
-    const supermarketDistances = self._supermarkets.map(
-      (supermarket) => self._findDistance(target, supermarket)
-    );
-
-    const fastFoodDistances = self._fastFoods.map(
-      (supermarket) => self._findDistance(target, supermarket)
-    );
-
-    const supermarketMiles = Math.min(...supermarketDistances);
-    const fastFoodMiles = Math.min(...fastFoodDistances);
-
-    const distanceToFood = Math.min(supermarketMiles, fastFoodMiles);
-    let newState = null;
-    if (distanceToFood > 1) {
-      newState = "unknown";
-    } else {
-      const disparity = supermarketMiles / fastFoodMiles;
-      const supermarketByRatio = disparity < self._allowedDistanceDisparity;
-      const supermarketByToll = Math.abs(
-        supermarketMiles - fastFoodMiles
-      ) < 0.1;
-      const useSupermarket = supermarketByToll || supermarketByRatio;
-      newState = useSupermarket ? "supermarket" : "fastFood";
-    }
-
-    target.setState(newState);
-    target.setUpdating(false);
-  }
-
-  _findDistance(a, b) {
-    const self = this;
-    return findDistanceMiles(
-      {"x": a.getLongitude(), "y": a.getLatitude()},
-      {"x": b.getLongitude(), "y": b.getLatitude()}
-    );
-  }
-
-  _setAllHomesUpdating() {
-    const self = this;
-    self._homes.forEach((x) => {x.setUpdating(true);});
-  }
-
-}
-
-
 class Presenter {
 
   constructor(entitySet) {
@@ -350,9 +171,12 @@ class Presenter {
 
     const mousePosition = self._getMousePos(event);
     const metersSpace = translateScalePointReverse(mousePosition);
-    const latLngSpace = rawProjectReverse(metersSpace["y"], metersSpace["x"]);
+    const latLngSpace = rawProjectReverse(metersSpace);
 
-    self._entitySet.addSupermarketAt(latLngSpace["x"], latLngSpace["y"]);
+    self._entitySet.addSupermarketAt(
+      latLngSpace["longitude"],
+      latLngSpace["latitude"]
+    );
   }
 
   _onRightClick(event) {
@@ -360,9 +184,12 @@ class Presenter {
 
     const mousePosition = self._getMousePos(event);
     const metersSpace = translateScalePointReverse(mousePosition);
-    const latLngSpace = rawProjectReverse(metersSpace["y"], metersSpace["x"]);
+    const latLngSpace = rawProjectReverse(metersSpace);
 
-    self._entitySet.addFastFoodAt(latLngSpace["x"], latLngSpace["y"]);
+    self._entitySet.addFastFoodAt(
+      latLngSpace["longitude"],
+      latLngSpace["latitude"]
+    );
   }
 
   _getMousePos(event) {
