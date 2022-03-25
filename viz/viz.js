@@ -81,11 +81,16 @@ class Presenter {
         "supermarket": "#A6CEE3",
         "fastFood": "#B2DF8A"
       }[home.getState()];
-      self._ring(home.getX(), home.getY(), 3, color);
+
+      if (home.getState() === "fastFood") {
+        self._squareEmpty(home.getX(), home.getY(), 3, color);
+      } else {
+        self._ring(home.getX(), home.getY(), 3, color);
+      }
     });
 
     self._entitySet.getFastFoods().forEach((fastFood) => {
-      self._ellipse(fastFood.getX(), fastFood.getY(), 5, "#33A02C");
+      self._squareFill(fastFood.getX(), fastFood.getY(), 5, "#33A02C");
     });
 
     self._entitySet.getSupermarkets().forEach((supermarket) => {
@@ -128,6 +133,24 @@ class Presenter {
   }
 
   /**
+   * Draw a residential entity as a non-filled in square.
+   *
+   * @param x The x (horizontal) coordinate (pixels) at which to draw the
+   *    square.
+   * @param y The y (vertical) coordinate (pixels) at which to draw the square.
+   * @param radius The radius of the square in pixels.
+   * @param color The string hex color in which to draw the square.
+   */
+  _squareEmpty(x, y, radius, color) {
+    const self = this;
+    self._ctx.save();
+    self._ctx.strokeStyle = color;
+    self._ctx.lineWidth = 2;
+    self._ctx.strokeRect(x - radius, y - radius, radius * 2, radius * 2);
+    self._ctx.restore();
+  }
+
+  /**
    * Draw a non-residential entity as a filled in circle.
    *
    * @param x The x (horizontal) coordinate (pixels) at which to draw the
@@ -145,6 +168,24 @@ class Presenter {
     self._ctx.globalAlpha = 0.6;
     self._ctx.fill();
     self._ctx.closePath();
+    self._ctx.restore();
+  }
+
+  /**
+   * Draw a fast food entity as a filled in square.
+   *
+   * @param x The x (horizontal) coordinate (pixels) at which to draw the
+   *    square.
+   * @param y The y (vertical) coordinate (pixels) at which to draw the square.
+   * @param radius The radius of the square in pixels.
+   * @param color The string hex color in which to draw the square.
+   */
+  _squareFill(x, y, radius, color) {
+    const self = this;
+    self._ctx.save();
+    self._ctx.fillStyle = color;
+    self._ctx.globalAlpha = 0.6;
+    self._ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2);
     self._ctx.restore();
   }
 
