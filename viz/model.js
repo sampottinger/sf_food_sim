@@ -267,6 +267,11 @@ class EntitySet {
     self._setAllHomesUpdating();
   }
 
+  /**
+   * Update a single home entity.
+   *
+   * @param target Entity with type of home to be updated.
+   */
   _updateHome(target) {
     const self = this;
 
@@ -299,6 +304,13 @@ class EntitySet {
     target.setUpdating(false);
   }
 
+  /**
+   * Find distance between two entities.
+   *
+   * @param a First entity from which distance should be measured.
+   * @param b second entity to which distance should be measured.
+   * @returns Miles between the two points.
+   */
   _findDistance(a, b) {
     const self = this;
     return findDistanceMiles(
@@ -307,6 +319,9 @@ class EntitySet {
     );
   }
 
+  /**
+   * Set all homes to the requires update state.
+   */
   _setAllHomesUpdating() {
     const self = this;
     self._homes.forEach((x) => {x.setUpdating(true);});

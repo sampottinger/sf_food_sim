@@ -1,5 +1,21 @@
+/**
+ * Main visualization logic.
+ *
+ * @license MIT license: A Samuel Pottinger
+ */
+
+
+/**
+ * Presenter which manages and updates visualization state.
+ */
 class Presenter {
 
+  /**
+   * Create a new presenter.
+   *
+   * @entitySet Thet set of entities within the visualization / simulation.
+   *    These will be updated and drawn by this presenter.
+   */
   constructor(entitySet) {
     const self = this;
     self._entitySet = entitySet;
@@ -51,6 +67,9 @@ class Presenter {
     });
   }
 
+  /**
+   * Draw all entities within the visualization / simulation.
+   */
   draw() {
     const self = this;
 
@@ -74,6 +93,9 @@ class Presenter {
     });
   }
 
+  /**
+   * Draw and update all entites (that are waiting for updates) in the viz.
+   */
   update() {
     const self = this;
 
@@ -84,6 +106,15 @@ class Presenter {
     }
   }
 
+  /**
+   * Draw a residential entity as a non-filled in circle.
+   *
+   * @param x The x (horizontal) coordinate (pixels) at which to draw the
+   *    circle.
+   * @param y The y (vertical) coordinate (pixels) at which to draw the circle.
+   * @param radius The radius of the circle in pixels.
+   * @param color The string hex color in which to draw the circle.
+   */
   _ring(x, y, radius, color) {
     const self = this;
     self._ctx.save();
@@ -96,6 +127,15 @@ class Presenter {
     self._ctx.restore();
   }
 
+  /**
+   * Draw a non-residential entity as a filled in circle.
+   *
+   * @param x The x (horizontal) coordinate (pixels) at which to draw the
+   *    circle.
+   * @param y The y (vertical) coordinate (pixels) at which to draw the circle.
+   * @param radius The radius of the circle in pixels.
+   * @param color The string hex color in which to draw the circle.
+   */
   _ellipse(x, y, radius, color) {
     const self = this;
     self._ctx.save();
@@ -108,12 +148,26 @@ class Presenter {
     self._ctx.restore();
   }
 
+  /**
+   * Callback for when the distance disparity parameter changes.
+   *
+   * Callback function for when the user changes the slider in the visualization
+   * corresponding to how much further the simulation assumes one will go to get
+   * to a supermarket instead of fast food.
+   */
   _onTolleranceChange() {
     const self = this;
     self._entitySet.setDistanceDisparity(self._allowedTolleranceSlider.value);
     self._updateTolleranceDisplay();
   }
 
+  /**
+   * Update display with info about the distance disparity parameter change.
+   *
+   * Update HTML elements which display the parameter corresponding to how much
+   * further the simulation assumes one will go to get to a supermarket instead
+   * of fast food.
+   */
   _updateTolleranceDisplay() {
     const self = this;
     const allowed = Math.round(
@@ -124,6 +178,12 @@ class Presenter {
     self._allowedTolleranceDisplay.innerHTML = allowedStr + "%";
   }
 
+  /**
+   * Display distribution of residential entity states as percentages.
+   *
+   * Update chart which shows what percent of simulated residential / home
+   * entities are simulated to go to fast food, supermarkets, or neither.
+   */
   _updateSummary() {
     const self = this;
 
@@ -166,6 +226,12 @@ class Presenter {
     self._fastFoodBarDisplay.style.width = fastFoodWidth;
   }
 
+  /**
+   * Callback for left click in the visualization canvas.
+   *
+   * Callback for when the user left clicks to construct a new simulated
+   * supermarket.
+   */
   _onLeftClick(event) {
     const self = this;
 
@@ -179,6 +245,12 @@ class Presenter {
     );
   }
 
+  /**
+   * Callback for right / secondary click in the visualization canvas.
+   *
+   * Callback for when the user right clicks to construct a new simulated
+   * supermarket.
+   */
   _onRightClick(event) {
     const self = this;
 
@@ -192,6 +264,14 @@ class Presenter {
     );
   }
 
+  /**
+   * Get the position of the mouse in the visualization canvas.
+   *
+   * @param event The event from the mouse / cursor.
+   * @returns Object on which the x attribute corresponds to horizontal pixel
+   *    position of mouse relative to 0, 0 position on canvas and y attribute
+   *    corresponds to horizontal pixel position of mouse relative to 0, 0.
+   */
   _getMousePos(event) {
     const self = this;
     const rect = self._canvas.getBoundingClientRect();
@@ -204,6 +284,12 @@ class Presenter {
 }
 
 
+/**
+ * Force a value to be a float.
+ *
+ * @param target The string or float value to be forced to be a float.
+ * @returns The value of target interpreted as a float.
+ */
 function forceFloat(target) {
   if (typeof target === "string") {
     return parseFloat(target);
@@ -213,13 +299,27 @@ function forceFloat(target) {
 }
 
 
+/**
+ * Determine if a value is a "valid" floating point value.
+ *
+ * @param target The value to check.
+ * @returns True if the target is a finite floating point value and false
+ *    otherwise.
+ */
 function isValid(target) {
   return target !== undefined && isFinite(target);
 }
 
 
+/**
+ * Randomize the order of elements in an array.
+ *
+ * @param target The array whose order should be randomized.
+ * @returns Array with all of the same elements as the input array but returned
+ *    in a new order.
+ * @source stackoverflow.com/questions/2450954
+ */
 function shuffle(target) {
-  // Thanks stackoverflow.com/questions/2450954
   return target
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
@@ -227,6 +327,11 @@ function shuffle(target) {
 }
 
 
+/**
+ * Start the periodic render / update loop for the simulation.
+ *
+ * @param presenter The presenter that should be perodically rendered / updated.
+ */
 function startDrawLoop(presenter) {
   setInterval(() => {
     presenter.update();
@@ -234,6 +339,14 @@ function startDrawLoop(presenter) {
 }
 
 
+/**
+ * Callback when entity information is loaded.
+ *
+ * Callback for when the starting entity information is loaded from the
+ * visualization source CSV file. This will start the draw / update loop.
+ *
+ * @param results The starting entity CSV file.
+ */
 function onEntityLoad(results) {
   const homes = [];
   const fastFoods = [];
@@ -276,6 +389,12 @@ function onEntityLoad(results) {
 }
 
 
+/**
+ * Request that visualization entity data be loaded.
+ *
+ * Request that visualization entity data be loaded, creating the visualization
+ * presenter and starting the draw / update loop afterwards.
+ */
 function loadEntitySet() {
   Papa.parse("./combined.csv", {
     download: true,
