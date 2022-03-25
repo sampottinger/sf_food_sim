@@ -250,7 +250,17 @@ class EntitySet {
     toUpdate.forEach((home) => { self._updateHome(home); });
     return toUpdate.length > 0;
   }
-  
+
+  /**
+   * Set assumption of tollerated extra distance to supermarket.
+   *
+   * Set how much further someone is willing to go to supermarket compared to
+   * fast food.
+   *
+   * @param distanceDisparity New ratio to use (supermarket distance divided by
+   *    fast food distance). Will set home entities' status to supermarket if
+   *    the ratio to closest supermarket is under this threshold.
+   */
   setDistanceDisparity(distanceDisparity) {
     const self = this;
     self._allowedDistanceDisparity = distanceDisparity;
