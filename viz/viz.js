@@ -82,10 +82,10 @@ class Presenter {
         "fastFood": "#B2DF8A"
       }[home.getState()];
 
-      if (home.getState() === "fastFood") {
-        self._squareEmpty(home.getX(), home.getY(), 3, color);
-      } else {
+      if (home.getState() === "supermarket") {
         self._ring(home.getX(), home.getY(), 3, color);
+      } else {
+        self._squareEmpty(home.getX(), home.getY(), 3, color);
       }
     });
 
