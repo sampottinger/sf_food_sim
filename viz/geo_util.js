@@ -210,6 +210,6 @@ function project(point) {
     return null;
   }
 
-  const point = rawProject(longitude, latitude);
-  return translateScalePoint(point);
+  const pointMeters = rawProject(point);
+  return translateScalePoint(pointMeters);
 }

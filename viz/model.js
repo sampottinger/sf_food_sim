@@ -235,13 +235,13 @@ class EntitySet {
    *
    * Perform state updates on homes with the updating flag set to true but limit
    * the number of homes to be updated to the provided max. If a maximum is not
-   * provided, a default of 50 is used.
+   * provided, a default of 75 is used.
    *
    * @param maxHomes Maximum to update.
    */
   updateHomes(maxHomes) {
     if (maxHomes === undefined) {
-      maxHomes = 50;
+      maxHomes = 75;
     }
 
     const self = this;
