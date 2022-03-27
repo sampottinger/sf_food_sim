@@ -2,14 +2,14 @@
 <html>
 
   <head>
-    <title>SF Food Desert Simulation</title>
+    <title>SF Food Availability Simulation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./viz.css">
   </head>
 
   <body>
     <header>
-      <h1>SF Food Desert Simulation</h1>
+      <h1>SF Food Availability Simulation</h1>
       <div class="intro">
         How does our built environment influence our eating behavior? This is San Francisco and each filled shape is either a supermarket (circle) or fast food (square). Each unfilled shape represents places with housing. One might compare this to maps of <a href="https://www.city-data.com/income/income-San-Francisco-California.html">income in the area</a>, <a href="https://nickconwayblog.wordpress.com/2016/11/13/the-disappearance-of-san-franciscos-middle-class-neighborhoods-1990-2010/">how neighborhood wealth has changed over time</a>, and <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">mass transit</a>.
       </div>
@@ -21,7 +21,7 @@
       <div id="controlArea" class="tool-area">
         <div class="subcontrol">
           <div class="main-label">Construct new: </div>
-          <div>Left click to add supermarket and right click to add fast food.</div>
+          <div>Left click to add supermarket (<img class="example-img" alt="Example of what a supermarket looks like in the simulation" src="./supermarket.png">) and right click to add fast food (<img class="example-img" alt="Example of what fast food looks like in the simulation" src="./fastfood.png">).</div>
         </div>
         <div class="subcontrol">
           <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
@@ -31,15 +31,15 @@
         <div class="subcontrol">
           <div class="main-label">Summary of results:</div>
           <div class="summary-display" id="supermarketSummary">
-            <div class="numeric-display" id="supermarketNumericDisplay"></div>
+            <div class="numeric-display"><span id="supermarketNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area choosing supermarket looks like in the simulation" src="./home_supermarket.png">)</div>
             <div class="bar-display" id="supermarketBarDisplay"></div>
           </div>
           <div class="summary-display" id="fastFoodSummary">
-            <div class="numeric-display" id="fastFoodNumericDisplay"></div>
+            <div class="numeric-display"><span id="fastFoodNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area choosing fast food looks like in the simulation" src="./home_fastfood.png">)</div>
             <div class="bar-display" id="fastFoodBarDisplay"></div>
           </div>
           <div class="summary-display" id="unknownSummary">
-            <div class="numeric-display" id="unknownNumericDisplay"></div>
+            <div class="numeric-display"><span id="unknownNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area far from food source looks like in the simulation" src="./home_desert.png">)</div>
             <div class="bar-display" id="unknownBarDisplay"></div>
           </div>
         </div>
