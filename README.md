@@ -36,7 +36,7 @@ No automated testing standards enforced by jsdoc encouraged.
 
 Open Source
 --------------------------------------------------------------------------------
-Code available under the [MIT license](https://mit-license.org/) (see LICENSE). Uses the following:
+Code available under the [MIT license](https://mit-license.org/) (see `LICENSE.md`). Uses the following:
 
  - [OpenStreetMap data under the ODBL license](https://www.openstreetmap.org)
  - [proj4js under the MIT license](http://proj4js.org/)
