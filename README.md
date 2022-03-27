@@ -47,4 +47,4 @@ Code available under the [MIT license](https://mit-license.org/) (see LICENSE). 
  - [Jupyter under the BSD license](https://jupyter.org/)
  - [Shapely under the BSD license](https://github.com/shapely/shapely)
 
-This SF Food Sim database (viz/combined.csv) is made available under the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in individual contents of the database are licensed under the Database Contents License: http://opendatacommons.org/licenses/dbcl/1.0/
+This SF Food Sim database (`viz/combined.csv`) is made available under the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in individual contents of the database are licensed under the Database Contents License: http://opendatacommons.org/licenses/dbcl/1.0/
