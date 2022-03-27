@@ -36,7 +36,7 @@ No automated testing standards enforced by jsdoc encouraged.
 
 Open Source
 --------------------------------------------------------------------------------
-Available under the MIT license. Uses the following:
+Code available under the [MIT license](https://mit-license.org/) (see LICENSE). Uses the following:
 
  - [OpenStreetMap data under the ODBL license](https://www.openstreetmap.org)
  - [proj4js under the MIT license](http://proj4js.org/)
@@ -46,3 +46,5 @@ Available under the MIT license. Uses the following:
  - [Python](https://www.python.org/)
  - [Jupyter under the BSD license](https://jupyter.org/)
  - [Shapely under the BSD license](https://github.com/shapely/shapely)
+
+This SF Food Sim database (viz/combined.csv) is made available under the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in individual contents of the database are licensed under the Database Contents License: http://opendatacommons.org/licenses/dbcl/1.0/
