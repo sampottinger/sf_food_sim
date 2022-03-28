@@ -60,11 +60,6 @@ class Presenter {
       self._onLeftClick(event);
       event.preventDefault();
     });
-
-    self._canvas.addEventListener('contextmenu', (event) => {
-      self._onRightClick(event);
-      event.preventDefault();
-    });
   }
 
   /**
@@ -268,12 +263,25 @@ class Presenter {
   }
 
   /**
-   * Callback for left click in the visualization canvas.
+   * Callback for when the user has left clicked to add a building.
+   */
+  _onLeftClick(event) {
+    const self = this;
+    
+    if (document.getElementById("supermarketRadio").checked) {
+      self._onClickSupermarket(event);
+    } else {
+      self._onClickFastFood(event);
+    }
+  }
+
+  /**
+   * Callback for click in the visualization canvas for supermarket.
    *
    * Callback for when the user left clicks to construct a new simulated
    * supermarket.
    */
-  _onLeftClick(event) {
+  _onClickSupermarket(event) {
     const self = this;
 
     const mousePosition = self._getMousePos(event);
@@ -287,12 +295,12 @@ class Presenter {
   }
 
   /**
-   * Callback for right / secondary click in the visualization canvas.
+   * Callback for click in the visualization canvas for fast food.
    *
-   * Callback for when the user right clicks to construct a new simulated
-   * supermarket.
+   * Callback for when the user left clicks to construct a new simulated
+   * fast food.
    */
-  _onRightClick(event) {
+  _onClickFastFood(event) {
     const self = this;
 
     const mousePosition = self._getMousePos(event);

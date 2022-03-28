@@ -69,8 +69,16 @@ h1 {
   float: left;
 }
 
+#buildingSubPanel {
+  padding-top: 8px;
+}
+
 #displayArea {
   text-align: center;
+}
+
+#displayArea:hover {
+  cursor: crosshair;
 }
 
 #fastFoodSummary {
