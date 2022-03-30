@@ -1,6 +1,6 @@
 SF Food Sim
 ================================================================================
-In-browser demo simulation of eating habits and food purchasing decisions in San Francisco under the MIT license as included. See it at https://gleap.org/static/special/sf_food_sim/viz.html.
+In-browser demo simulation of eating habits and food purchasing decisions in San Francisco under the MIT license as included. See it at https://foodsimsf.com.
 
 <br>
 
@@ -12,7 +12,7 @@ This interactive simulation allows players to explore different potential future
 
 Usage
 --------------------------------------------------------------------------------
-Available online at https://gleap.org/static/special/sf_food_sim/viz.html.
+Available online at https://foodsimsf.com.
 
 <br>
 

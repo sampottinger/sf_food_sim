@@ -51,8 +51,15 @@ h1 {
 }
 
 .step-controls .next {
-  animation: pulse 1.5s infinite;
+  animation: pulse 2s infinite;
   font-weight: 500;
+  border: 2px solid;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.step-controls .next a:link, a:visited, a:hover, a:active {
+  color: #551A8B;
 }
 
 .subcontrol {
@@ -172,13 +179,13 @@ h1 {
 
 @keyframes pulse {
   0% {
-    opacity: 0.65;
+    border-color: rgba(100, 100, 100, 0);
   }
   50% {
-    opacity: 1;
+    border-color: rgba(100, 100, 100, 0.5);
   }
   100% {
-    opacity: 0.65;
+    border-color: rgba(100, 100, 100, 0);
   }
 }
 
@@ -187,7 +194,7 @@ h1 {
     background-color: rgba(240, 240, 240, 0);
   }
   50% {
-    background-color: rgba(240, 240, 240, 0.7);
+    background-color: rgba(240, 240, 240, 0.8);
   }
   100% {
     background-color: rgba(240, 240, 240, 0);
