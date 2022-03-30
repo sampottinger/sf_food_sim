@@ -54,8 +54,11 @@ h1 {
   animation: pulse 2s infinite;
   font-weight: 500;
   border: 2px solid;
-  padding-left: 2px;
-  padding-right: 2px;
+  padding: 2px;
+}
+
+.step-controls .previous {
+  padding: 2px;
 }
 
 .step-controls .next a:link, a:visited, a:hover, a:active {
