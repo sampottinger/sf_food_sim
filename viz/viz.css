@@ -26,10 +26,29 @@ h1 {
 
 .intro {
   padding-bottom: 10px;
+  border-top: 1px solid #C0C0C0;
+  padding-top: 5px;
 }
 
 .slider {
   width: 80%;
+}
+
+.step {
+  font-weight: 400;
+}
+
+.step.later {
+  display: none;
+}
+
+.step-controls {
+  padding-top: 10px;
+}
+
+.step-controls .next {
+  animation: pulse 1.5s infinite;
+  font-weight: 500;
 }
 
 .subcontrol {
@@ -144,5 +163,17 @@ h1 {
   #controlArea {
     border-left: 1px dotted #C0C0C0;
     padding-left: 10px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.65;
   }
 }

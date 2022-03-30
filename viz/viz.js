@@ -19,6 +19,11 @@ class Presenter {
   constructor(entitySet) {
     const self = this;
     self._entitySet = entitySet;
+    self._overlayChange = false;
+    self._hasOverlay = false;
+    self._overlayX = null;
+    self._overlayY = null;
+    self._overlayRadius = null;
 
     self._canvas = document.getElementById("vizCanvas");
     self._ctx = self._canvas.getContext("2d");
@@ -56,7 +61,7 @@ class Presenter {
 
     self._onTolleranceChange();
 
-    self._canvas.addEventListener('click', (event) => {
+    self._canvas.addEventListener("click", (event) => {
       self._onLeftClick(event);
       event.preventDefault();
     });
@@ -91,6 +96,10 @@ class Presenter {
     self._entitySet.getSupermarkets().forEach((supermarket) => {
       self._ellipse(supermarket.getX(), supermarket.getY(), 5, "#1F78B4");
     });
+
+    if (self._hasOverlay) {
+      self._ring(self._overlayX, self._overlayY, self._overlayRadius, "#303030");
+    }
   }
 
   /**
@@ -100,10 +109,38 @@ class Presenter {
     const self = this;
 
     const hasUpdates = self._entitySet.updateHomes();
-    if (hasUpdates) {
+    if (hasUpdates || self._overlayChange) {
       self.draw();
       self._updateSummary();
+      self._overlayChange = false;
     }
+  }
+
+  /**
+   * Add an overlay ellipse, like for the tutorial.
+   *
+   * @param x The x coordinate of the overlay in pixels.
+   * @param y The y coordinate of the overlay in pixels.
+   * @param radius The radius of the overlay in pixels.
+   */
+  addOverlay(x, y, radius) {
+    const self = this;
+
+    self._overlayChange = true;
+    self._hasOverlay = true;
+    self._overlayX = x;
+    self._overlayY = y;
+    self._overlayRadius = radius;
+  }
+
+  /**
+   * Remove overlay ellipse, like for the tutorial.
+   */
+  clearOverlay(x, y, radius) {
+    const self = this;
+
+    self._overlayChange = true;
+    self._hasOverlay = false;
   }
 
   /**
@@ -267,7 +304,7 @@ class Presenter {
    */
   _onLeftClick(event) {
     const self = this;
-    
+
     if (document.getElementById("supermarketRadio").checked) {
       self._onClickSupermarket(event);
     } else {
@@ -435,6 +472,8 @@ function onEntityLoad(results) {
   const presenter = new Presenter(entitySet);
 
   startDrawLoop(presenter);
+
+  initTutorial(presenter);
 }
 
 
@@ -450,6 +489,80 @@ function loadEntitySet() {
     complete: onEntityLoad,
     header: true
   });
+}
+
+
+/**
+ * Stop displaying any tutorial overlays.
+ *
+ * @param presenter The presenter to manipulate.
+ */
+function hideAllHints(presenter) {
+  presenter.clearOverlay();
+}
+
+
+/**
+ * Display an overlay circle over Bayview.
+ *
+ * @param presenter The presenter to manipulate.
+ */
+function showBayview(presenter) {
+  presenter.addOverlay(460, 455, 60);
+}
+
+
+/**
+ * Display an overlay circle over Sunset.
+ *
+ * @param presenter The presenter to manipulate.
+ */
+function showSunset(presenter) {
+  presenter.addOverlay(160, 300, 90);
+}
+
+
+/**
+ * Show an animation on the controls section.
+ *
+ * @param presenter The presenter to manipulate.
+ */
+function pulseControls(presenter) {
+
+}
+
+
+/**
+ * Start the tutorial sequence.
+ *
+ * @param presenter The presenter to manipulate.
+ */
+function initTutorial(presenter) {
+
+  const extraActions = {
+    "step1": () => { hideAllHints(presenter); },
+    "step2": () => { hideAllHints(presenter); },
+    "step3": () => { hideAllHints(presenter); showBayview(presenter); },
+    "step4": () => { hideAllHints(presenter); },
+    "step5": () => { hideAllHints(presenter); showSunset(presenter); },
+    "step6": () => { hideAllHints(presenter); pulseControls(presenter); },
+    "step7": () => { hideAllHints(presenter); }
+  };
+
+  function addListeners(target) {
+    target.addEventListener("click", (event) => {
+      const currentId = target.getAttribute("current");
+      document.getElementById(currentId).style.display = "none";
+
+      const newId = target.getAttribute("href").replace("#", "");
+      document.getElementById(newId).style.display = "block";
+
+      extraActions[newId]();
+    });
+  }
+
+  document.querySelectorAll(".previous").forEach(addListeners);
+  document.querySelectorAll(".next").forEach(addListeners);
 }
 
 

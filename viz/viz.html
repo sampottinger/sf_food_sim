@@ -12,7 +12,48 @@
       <div><a id="skip-link" href="#toolSection">Skip to Content</a></div>
       <h1>SF Food Availability Simulation</h1>
       <div class="intro">
-        How does our built environment influence our eating behavior? This is San Francisco and each filled shape is either a supermarket (circle) or fast food (square). Each unfilled shape represents places with housing. One might compare this to maps of <a href="https://www.city-data.com/income/income-San-Francisco-California.html">income in the area</a>, <a href="https://nickconwayblog.wordpress.com/2016/11/13/the-disappearance-of-san-franciscos-middle-class-neighborhoods-1990-2010/">how neighborhood wealth has changed over time</a>, and <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">mass transit</a>.
+        <div class="step" id="step1">
+          How does our built environment influence our eating behavior? Cities impact our health in lots of ways but consider distance to different food options.
+          <div class="step-controls">
+            <a href="#step2" current="step1" class="next">Next >></a>
+          </div>
+        </div>
+        <div class="step later" id="step2">
+          This is San Francisco with its supermarkets (<img class="example-img" alt="Example of what a supermarket looks like in the simulation" src="./supermarket.png">) and fast food (<img class="example-img" alt="Example of what fast food looks like in the simulation" src="./fastfood.png">). Each unfilled shape represents places with housing and if, in the simulation, they would "choose" to go to fast food (<img class="example-img" alt="Example of what a residential area choosing fast food looks like in the simulation" src="./home_fastfood.png">) or a supermarket (<img class="example-img" alt="Example of what a residential area choosing supermarket looks like in the simulation" src="./home_supermarket.png">).
+          <div class="step-controls">
+            <a href="#step1" current="step2" class="previous"><< Previous</a> / <a href="#step3" current="step2" class="next">Next >></a>
+          </div>
+        </div>
+        <div class="step later" id="step3">
+          While there is more density in the northern part of the city which may make access easier, the south may see a different pattern. This includes the Bayview neighborhood (circled) which is also among <a href="https://www.sfpublicpress.org/high-housing-prices-undercut-aid-programs/">the poorer areas</a>. Contrast to the area surrounding Twin Peaks just to west which has multiple supermarkets.
+          <div class="step-controls">
+            <a href="#step2" current="step3" class="previous"><< Previous</a> / <a href="#step4" current="step3" class="next">Next >></a>
+          </div>
+        </div>
+        <div class="step later" id="step4">
+          Of course, supermarkets exist to the south of the city. However, note that SF MUNI, the city transit system, <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">does not necessarily extend directly into those areas</a> such that transfer between systems would be needed.
+          <div class="step-controls">
+            <a href="#step3" current="step4" class="previous"><< Previous</a> / <a href="#step5" current="step4" class="next">Next >></a>
+          </div>
+        </div>
+        <div class="step later" id="step5">
+          Income isn't the only factor worth looking at. Going north, parts of the Sunset neighborhood see <a href="https://nextcity.org/urbanist-news/maps-public-transportation-access-poverty-equity">poor transportation access</a> and also fewer supermarkets away from its center even though it sees a higher median income.
+          <div class="step-controls">
+            <a href="#step4" current="step5" class="previous"><< Previous</a> / <a href="#step6" current="step5" class="next">Next >></a>
+          </div>
+        </div>
+        <div class="step later" id="step6">
+          How would you encourage healthier eating habits? You can change the simulation parameters, building new supermarkets or fast food. Also, you can change how much further the simulation expects someone to go to get to a supermarket relative to fast food.
+          <div class="step-controls">
+            <a href="#step5" current="step6" class="previous"><< Previous</a> / <a href="#step7" current="step6" class="next">Next >></a>
+          </div>
+        </div>
+        <div class="step later" id="step7">
+          One might also consider maps of <a href="https://www.city-data.com/income/income-San-Francisco-California.html">income in the area</a>, <a href="https://nickconwayblog.wordpress.com/2016/11/13/the-disappearance-of-san-franciscos-middle-class-neighborhoods-1990-2010/">how neighborhood wealth has changed over time</a>, and <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">mass transit</a>.
+          <div class="step-controls">
+            <a href="#step6" current="step7" class="previous"><< Previous</a>
+          </div>
+        </div>
       </div>
     </header>
     <section id="toolSection">
