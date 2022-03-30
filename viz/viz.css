@@ -194,12 +194,12 @@ h1 {
 
 @keyframes pulsebg {
   0% {
-    background-color: rgba(240, 240, 240, 0);
+    background-color: rgba(230, 230, 230, 0);
   }
   50% {
-    background-color: rgba(240, 240, 240, 0.8);
+    background-color: rgba(230, 230, 230, 0.8);
   }
   100% {
-    background-color: rgba(240, 240, 240, 0);
+    background-color: rgba(230, 230, 230, 0);
   }
 }
