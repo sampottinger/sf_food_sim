@@ -30,6 +30,10 @@ h1 {
   padding-top: 5px;
 }
 
+.pulse-bg {
+  animation: pulsebg 1.5s infinite;
+}
+
 .slider {
   width: 80%;
 }
@@ -175,5 +179,17 @@ h1 {
   }
   100% {
     opacity: 0.65;
+  }
+}
+
+@keyframes pulsebg {
+  0% {
+    background-color: rgba(240, 240, 240, 0);
+  }
+  50% {
+    background-color: rgba(240, 240, 240, 0.7);
+  }
+  100% {
+    background-color: rgba(240, 240, 240, 0);
   }
 }

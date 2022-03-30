@@ -25,13 +25,13 @@
           </div>
         </div>
         <div class="step later" id="step3">
-          While there is more density in the northern part of the city which may make access easier, the south may see a different pattern. This includes the Bayview neighborhood (circled) which is also among <a href="https://www.sfpublicpress.org/high-housing-prices-undercut-aid-programs/">the poorer areas</a>. Contrast to the area surrounding Twin Peaks just to west which has multiple supermarkets.
+          While there is more density in the northern part of the city which may make access easier, the south may see a different pattern. This includes the Bayview neighborhood (circled) which is also among <a href="https://www.sfpublicpress.org/high-housing-prices-undercut-aid-programs/">the poorer areas</a>.
           <div class="step-controls">
             <a href="#step2" current="step3" class="previous"><< Previous</a> / <a href="#step4" current="step3" class="next">Next >></a>
           </div>
         </div>
         <div class="step later" id="step4">
-          Of course, supermarkets exist to the south of the city. However, note that SF MUNI, the city transit system, <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">does not necessarily extend directly into those areas</a> such that transfer between systems would be needed.
+          Contrast to the area surrounding Twin Peaks just to west which has multiple supermarkets. Of course, supermarkets exist to the south of the city. However, note that SF MUNI, the city transit system, <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">does not necessarily extend directly into those areas</a> such that transfer between systems would be needed.
           <div class="step-controls">
             <a href="#step3" current="step4" class="previous"><< Previous</a> / <a href="#step5" current="step4" class="next">Next >></a>
           </div>
@@ -61,38 +61,40 @@
         <canvas id="vizCanvas" width="625" height="520"></canvas>
       </div>
       <div id="controlArea" class="tool-area">
-        <div class="subcontrol">
-          <div class="main-label">Construct new: </div>
-          <div>
-            Left click to construct new building.
-            <div id="buildingSubPanel">
-              <div><label for="supermarketRadio"><input type="radio" name="buildingType" id="supermarketRadio" checked> Supermarket (<img class="example-img" alt="Example of what a supermarket looks like in the simulation" src="./supermarket.png">)</label></div>
-              <div><label for="fastFoodRadio"><input type="radio" name="buildingType" id="fastFoodRadio"> Fast food (<img class="example-img" alt="Example of what fast food looks like in the simulation" src="./fastfood.png">)</label></div>
+        <div id="controlAreaInner">
+          <div class="subcontrol">
+            <div class="main-label">Construct new: </div>
+            <div>
+              Left click to construct new building.
+              <div id="buildingSubPanel">
+                <div><label for="supermarketRadio"><input type="radio" name="buildingType" id="supermarketRadio" checked> Supermarket (<img class="example-img" alt="Example of what a supermarket looks like in the simulation" src="./supermarket.png">)</label></div>
+                <div><label for="fastFoodRadio"><input type="radio" name="buildingType" id="fastFoodRadio"> Fast food (<img class="example-img" alt="Example of what fast food looks like in the simulation" src="./fastfood.png">)</label></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="subcontrol">
-          <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
-          <div><input class="slider" type="range" min="1.1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
-          <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket?</div>
-        </div>
-        <div class="subcontrol">
-          <div class="main-label">Summary of results:</div>
-          <div class="summary-display" id="supermarketSummary">
-            <div class="numeric-display"><span id="supermarketNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area choosing supermarket looks like in the simulation" src="./home_supermarket.png">)</div>
-            <div class="bar-display" id="supermarketBarDisplay"></div>
+          <div class="subcontrol">
+            <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
+            <div><input class="slider" type="range" min="1.1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
+            <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket?</div>
           </div>
-          <div class="summary-display" id="fastFoodSummary">
-            <div class="numeric-display"><span id="fastFoodNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area choosing fast food looks like in the simulation" src="./home_fastfood.png">)</div>
-            <div class="bar-display" id="fastFoodBarDisplay"></div>
-          </div>
-          <div class="summary-display" id="unknownSummary">
-            <div class="numeric-display"><span id="unknownNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area far from food source looks like in the simulation" src="./home_desert.png">)</div>
-            <div class="bar-display" id="unknownBarDisplay"></div>
-          </div>
-          <div class="summary-display" id="axisDisplay">
-            <div id="startDisplay">0%</div>
-            <div id="endDisplay">100%</div>
+          <div class="subcontrol">
+            <div class="main-label">Summary of results:</div>
+            <div class="summary-display" id="supermarketSummary">
+              <div class="numeric-display"><span id="supermarketNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area choosing supermarket looks like in the simulation" src="./home_supermarket.png">)</div>
+              <div class="bar-display" id="supermarketBarDisplay"></div>
+            </div>
+            <div class="summary-display" id="fastFoodSummary">
+              <div class="numeric-display"><span id="fastFoodNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area choosing fast food looks like in the simulation" src="./home_fastfood.png">)</div>
+              <div class="bar-display" id="fastFoodBarDisplay"></div>
+            </div>
+            <div class="summary-display" id="unknownSummary">
+              <div class="numeric-display"><span id="unknownNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area far from food source looks like in the simulation" src="./home_desert.png">)</div>
+              <div class="bar-display" id="unknownBarDisplay"></div>
+            </div>
+            <div class="summary-display" id="axisDisplay">
+              <div id="startDisplay">0%</div>
+              <div id="endDisplay">100%</div>
+            </div>
           </div>
         </div>
       </div>

@@ -499,6 +499,7 @@ function loadEntitySet() {
  */
 function hideAllHints(presenter) {
   presenter.clearOverlay();
+  document.getElementById("controlAreaInner").className = "";
 }
 
 
@@ -523,12 +524,22 @@ function showSunset(presenter) {
 
 
 /**
+ * Display an overlay circle over Twin Peaks.
+ *
+ * @param presenter The presenter to manipulate.
+ */
+function showTwinPeaks(presenter) {
+  presenter.addOverlay(230, 425, 60);
+}
+
+
+/**
  * Show an animation on the controls section.
  *
  * @param presenter The presenter to manipulate.
  */
 function pulseControls(presenter) {
-
+  document.getElementById("controlAreaInner").className = "pulse-bg";
 }
 
 
@@ -543,7 +554,7 @@ function initTutorial(presenter) {
     "step1": () => { hideAllHints(presenter); },
     "step2": () => { hideAllHints(presenter); },
     "step3": () => { hideAllHints(presenter); showBayview(presenter); },
-    "step4": () => { hideAllHints(presenter); },
+    "step4": () => { hideAllHints(presenter); showTwinPeaks(presenter); },
     "step5": () => { hideAllHints(presenter); showSunset(presenter); },
     "step6": () => { hideAllHints(presenter); pulseControls(presenter); },
     "step7": () => { hideAllHints(presenter); }
