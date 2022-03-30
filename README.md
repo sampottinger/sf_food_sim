@@ -18,7 +18,7 @@ Available online at https://gleap.org/static/special/sf_food_sim/viz.html.
 
 Local Development Environment
 --------------------------------------------------------------------------------
-Simply run any local HTTP server capable of serving static files in the viz folder. For example, use `python -m http.server` and navigate to http://localhost:8000/viz.html. Note that preprocessing scripts are in `transform` as well as [overpass scripts](https://wiki.openstreetmap.org/wiki/Overpass_API) in `overpass`.
+Simply run any local HTTP server capable of serving static files in the viz folder. For example, use `python -m http.server` and navigate to http://localhost:8000/. Note that preprocessing scripts are in `transform` as well as [overpass scripts](https://wiki.openstreetmap.org/wiki/Overpass_API) in `overpass`.
 
 <br>
 
