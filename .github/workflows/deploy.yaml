@@ -5,8 +5,9 @@ on:
 
 jobs:
   upload_files:
+    environment: deploy
     runs-on: ubuntu-latest
-    name: Upload viz files 
+    name: Upload viz files
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
