@@ -20,4 +20,4 @@ jobs:
           username: ${{ secrets.SFTPUSER }}
           password: ${{ secrets.SFTPPASSWORD }}
           localPath: './viz'
-          remotePath: './sffoodsim.com'
+          remotePath: './foodsimsf.com'
