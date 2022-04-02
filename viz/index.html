@@ -12,48 +12,51 @@
       <div><a id="skip-link" href="#toolSection">Skip to Content</a></div>
       <h1>SF Food Availability Simulation</h1>
       <div class="intro">
-        <div class="step" id="step1">
-          How does our built environment influence eating habits? Cities impact our health in lots of ways but one of the most important is access to nutrition. <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/go-to-the-atlas/" target="_blank">Food deserts</a>, which the United States Department of Agriculture defines as <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/documentation/" target="_blank">low income areas 1 mile away from healthy affordable food</a>, are important for public health. For these residential areas, it can be challenging to cope with being far from healthy sources of food, making it difficult to maintain a good diet.
-          <div class="step-controls">
-            <a hef="#toolSection">Skip Guide</a> / <a href="#step2" current="step1" class="next first">Guide: Next >></a>
+        <div id="guide-contents">
+          <div class="step" id="step1">
+            Cities impact our health in lots of ways, including how they provide access to nutrition. Consider <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/go-to-the-atlas/" target="_blank">food deserts</a> which are <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/documentation/" target="_blank">low income areas 1 mile or more away from healthy affordable food</a>. These regions are important for public health because, for residents in these areas, it can be challenging to maintain a good diet while being far from healthy sources of food.
+            <div class="step-controls">
+              <a href="#toolSection" id="skipGuideLink">Skip Guide</a> / <a href="#step2" current="step1" class="next first">Guide: Next >></a>
+            </div>
           </div>
-        </div>
-        <div class="step later" id="step2">
-          What does food access look like in <a href="https://usabynumbers.com/richest-cities-in-the-us/" target="_blank">one of the wealthiest cities in the US</a>? This map shows all of the areas with housing within San Francisco. This guide will walk through different neighborhoods in the city and also give you a chance to explore what behavior changes or new construction can help with food access.
-          <div class="step-controls">
-            <a href="#step1" current="step2" class="previous"><< Previous</a> / <a href="#step3" current="step2" class="next">Next >></a>
+          <div class="step later" id="step2">
+            What does food access look like in <a href="https://usabynumbers.com/richest-cities-in-the-us/" target="_blank">one of the wealthiest cities in the US</a>? This map shows all of the areas with housing within San Francisco. This guide will walk through different neighborhoods in the city and also give you a chance to explore what behavior changes or new construction can help with food access.
+            <div class="step-controls">
+              <a href="#step1" current="step2" class="previous"><< Previous</a> / <a href="#step3" current="step2" class="next">Next >></a>
+            </div>
           </div>
-        </div>
-        <div class="step later" id="step3">
-          These filled in dots represent supermarkets. The denser northern part of the city offers many food options but there are some locations in SF with less access, especially in the less dense southern part of the city. For example, this is the Bayview which, <a href="https://www.sfpublicpress.org/high-housing-prices-undercut-aid-programs/" target="_blank">in addition to being one of the poorer areas</a>, has one of the few official food deserts in SF.
-          <div class="step-controls">
-            <a href="#step2" current="step3" class="previous"><< Previous</a> / <a href="#step4" current="step3" class="next">Next >></a>
+          <div class="step later" id="step3">
+            These filled in dots (<img src="./supermarket.png" alt="Screenshot of a supermarket in the simulation" class="example-img">) represent supermarkets. The denser northern part of the city offers many food options but there are some locations in SF with less access, especially in the less dense southern part of the city. For example, the simulation has circled Hunter's Point in the Bayview-Hunter's Point neighborhood which, <a href="https://www.sfpublicpress.org/high-housing-prices-undercut-aid-programs/" target="_blank">in addition to being one of the poorer areas</a>, is far from a supermarket.
+            <div class="step-controls">
+              <a href="#step2" current="step3" class="previous"><< Previous</a> / <a href="#step4" current="step3" class="next">Next >></a>
+            </div>
           </div>
-        </div>
-        <div class="step later" id="step4">
-          That said, consider that supermarkets aren’t the only source of food and these filled in squares represent fast food locations. This tool simulates if different residential areas would choose to go to fast food or the supermarket. Note how fast food dominates the south east of SF and, for a lot of residents in this poorer area, fast food simply represents a much more convenient option.
-          <div class="step-controls">
-            <a href="#step3" current="step4" class="previous"><< Previous</a> / <a href="#step5" current="step4" class="next">Next >></a>
+          <div class="step later" id="step4">
+            Of course, supermarkets aren't the only source of food and these filled in squares (<img src="./fastfood.png" alt="Screenshot of a fast food location in the simulation" class="example-img">) represent fast food locations. This tool simulates if different residential areas would choose to go to fast food or the supermarket based on distance to each. Note how fast food dominates the south east of SF and, for a lot of residents in this poorer area, fast food simply represents a much more convenient option.
+            <div class="step-controls">
+              <a href="#step3" current="step4" class="previous"><< Previous</a> / <a href="#step5" current="step4" class="next">Next >></a>
+            </div>
           </div>
-        </div>
-        <div class="step later" id="step5">
-          Of course, one might assume that this just reflects being further from the city center but income may matter here too. In contrast to the Bayview, the Twin Peaks area just to the west is both wealthier and offers more supermarket options. This demonstrates an interesting trend where sometimes income follows access: those potentially least equipped to travel to supermarkets are also sometimes those furthest from them.
-          <div class="step-controls">
-            <a href="#step4" current="step5" class="previous"><< Previous</a> / <a href="#step6" current="step5" class="next">Next >></a>
+          <div class="step later" id="step5">
+            Of course, one might assume that this just reflects being further from the city center but income may matter here too. In contrast to the Bayview, the Twin Peaks area just to the west is both wealthier and offers more supermarket options. This demonstrates an interesting trend where sometimes income follows access: those potentially least equipped to travel to supermarkets are also sometimes those furthest from them.
+            <div class="step-controls">
+              <a href="#step4" current="step5" class="previous"><< Previous</a> / <a href="#step6" current="step5" class="next">Next >></a>
+            </div>
           </div>
-        </div>
-        <div class="step later" id="step6">
-          Finally, food deserts are often framed in terms of physical distance and income but public transit also plays a role in food access. Consider the Sunset. While higher income relative to the Bayview, <a href="https://nextcity.org/urbanist-news/maps-public-transportation-access-poverty-equity" target="_blank">it sees poor transportation access</a>, indicating another way the layout of the city might "push" parts of its population to less healthy food options.
-          <div class="step-controls">
-            <a href="#step5" current="step6" class="previous"><< Previous</a> / <a href="#step7" current="step6" class="next">Next >></a>
+          <div class="step later" id="step6">
+            Finally, food deserts are often framed in terms of physical distance and income but public transit also plays a role in food access. Consider the Sunset. While higher income relative to the Bayview, <a href="https://nextcity.org/urbanist-news/maps-public-transportation-access-poverty-equity" target="_blank">it sees poor transportation access</a>, indicating another way the layout of the city might "push" parts of its population to less healthy food options.
+            <div class="step-controls">
+              <a href="#step5" current="step6" class="previous"><< Previous</a> / <a href="#step7" current="step6" class="next">Next >></a>
+            </div>
           </div>
-        </div>
-        <div class="step later" id="step7">
-          Now that you know what some of the problems are, how might you make it better? To simulate public policy encouraging development of new food sources (like subsidies), use these controls to add new supermarkets (or fast food locations). Also, use the slider to simulate programs (like transit subsidies) which might encourage residents to travel further to get to a supermarket relative to the nearest fast food option. You may also consider reviewing maps of <a href="https://www.city-data.com/income/income-San-Francisco-California.html">income in the area</a>, <a href="https://nickconwayblog.wordpress.com/2016/11/13/the-disappearance-of-san-franciscos-middle-class-neighborhoods-1990-2010/">how neighborhood wealth has changed over time</a>, and the <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">layout of SF’s mass transit</a>.
+          <div class="step later" id="step7">
+          Now that you know what some of the problems are, how might you make it better? To simulate public policy encouraging development of new food sources (like subsidies), use these controls to add new supermarkets (or fast food locations). Also, use the slider to simulate programs (like transit subsidies) which might encourage residents to travel further to get to a supermarket relative to the nearest fast food option. You may also consider reviewing maps of <a href="https://www.city-data.com/income/income-San-Francisco-California.html">income in the area</a>, <a href="https://nickconwayblog.wordpress.com/2016/11/13/the-disappearance-of-san-franciscos-middle-class-neighborhoods-1990-2010/">how neighborhood wealth has changed over time</a>, and the <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">layout of SF's mass transit</a>.
           <div class="step-controls">
             <a href="#step6" current="step7" class="previous"><< Previous</a>
           </div>
         </div>
+        </div>
+        <div id="skip-guide-msg">Guide skipped!</div>
       </div>
     </header>
     <section id="toolSection">
@@ -62,22 +65,7 @@
       </div>
       <div id="controlArea" class="tool-area">
         <div id="controlAreaInner">
-          <div class="subcontrol">
-            <div class="main-label">Construct new: </div>
-            <div>
-              Left click to construct new building.
-              <div id="buildingSubPanel">
-                <div><label for="supermarketRadio"><input type="radio" name="buildingType" id="supermarketRadio" checked> Supermarket (<img class="example-img" alt="Example of what a supermarket looks like in the simulation" src="./supermarket.png">)</label></div>
-                <div><label for="fastFoodRadio"><input type="radio" name="buildingType" id="fastFoodRadio"> Fast food (<img class="example-img" alt="Example of what fast food looks like in the simulation" src="./fastfood.png">)</label></div>
-              </div>
-            </div>
-          </div>
-          <div class="subcontrol">
-            <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
-            <div><input class="slider" type="range" min="1.1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
-            <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket?</div>
-          </div>
-          <div class="subcontrol">
+          <div class="subcontrol late" id="summaryPanel">
             <div class="main-label">Summary of results:</div>
             <div class="summary-display" id="supermarketSummary">
               <div class="numeric-display"><span id="supermarketNumericDisplay"></span> (<img class="example-img" alt="Example of what a residential area choosing supermarket looks like in the simulation" src="./home_supermarket.png">)</div>
@@ -95,6 +83,21 @@
               <div id="startDisplay">0%</div>
               <div id="endDisplay">100%</div>
             </div>
+          </div>
+          <div class="subcontrol late" id="constructPanel">
+            <div class="main-label">Construct new: </div>
+            <div>
+              Left click to construct new building.
+              <div id="buildingSubPanel">
+                <div><label for="supermarketRadio"><input type="radio" name="buildingType" id="supermarketRadio" checked> Supermarket (<img class="example-img" alt="Example of what a supermarket looks like in the simulation" src="./supermarket.png">)</label></div>
+                <div><label for="fastFoodRadio"><input type="radio" name="buildingType" id="fastFoodRadio"> Fast food (<img class="example-img" alt="Example of what fast food looks like in the simulation" src="./fastfood.png">)</label></div>
+              </div>
+            </div>
+          </div>
+          <div class="subcontrol late" id="distancePanel">
+            <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
+            <div><input class="slider" type="range" min="1.1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
+            <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket?</div>
           </div>
         </div>
       </div>

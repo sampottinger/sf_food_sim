@@ -152,6 +152,30 @@ class EntitySet {
     self._fastFoods = fastFoods;
     self._supermarkets = supermarkets;
     self._allowedDistanceDisparity = 1;
+    self._fastFoodEnabled = false;
+    self._supermarketEnabled = false;
+  }
+
+  /**
+   * Indicate if fast food entites should be shown / used.
+   *
+   * @param newFastFoodEnabled True if they should be enabled and false otherwise.
+   */
+  setFastFoodEnabled(newFastFoodEnabled) {
+    const self = this;
+    self._fastFoodEnabled = newFastFoodEnabled;
+    self._setAllHomesUpdating();
+  }
+
+  /**
+   * Indicate if supermarket entites should be shown / used.
+   *
+   * @param newSupermarketEnabled True if they should be enabled and false otherwise.
+   */
+  setSupermarketEnabled(newSupermarketEnabled) {
+    const self = this;
+    self._supermarketEnabled = newSupermarketEnabled;
+    self._setAllHomesUpdating();
   }
 
   /**
@@ -171,7 +195,11 @@ class EntitySet {
    */
   getFastFoods() {
     const self = this;
-    return self._fastFoods;
+    if (self._fastFoodEnabled) {
+      return self._fastFoods;
+    } else {
+      return [];
+    }
   }
 
   /**
@@ -204,7 +232,11 @@ class EntitySet {
    */
   getSupermarkets() {
     const self = this;
-    return self._supermarkets;
+    if (self._supermarketEnabled) {
+      return self._supermarkets;
+    } else {
+      return [];
+    }
   }
 
   /**
@@ -268,6 +300,21 @@ class EntitySet {
   }
 
   /**
+   * Determine the min value from a collection or, if empty, return empty value.
+   *
+   * @param target The collection from which to get the minimum.
+   * @param emptyValue The value to use if the target collection is empty.
+   * @returns Minimum value or emptyValue if target is empty.
+   */
+  _getMinOrEmpty(target, emptyValue) {
+    if (target.length == 0) {
+      return emptyValue;
+    } else {
+      return Math.min(...target);
+    }
+  }
+
+  /**
    * Update a single home entity.
    *
    * @param target Entity with type of home to be updated.
@@ -275,16 +322,16 @@ class EntitySet {
   _updateHome(target) {
     const self = this;
 
-    const supermarketDistances = self._supermarkets.map(
+    const supermarketDistances = self.getSupermarkets().map(
       (supermarket) => self._findDistance(target, supermarket)
     );
 
-    const fastFoodDistances = self._fastFoods.map(
+    const fastFoodDistances = self.getFastFoods().map(
       (supermarket) => self._findDistance(target, supermarket)
     );
 
-    const supermarketMiles = Math.min(...supermarketDistances);
-    const fastFoodMiles = Math.min(...fastFoodDistances);
+    const supermarketMiles = self._getMinOrEmpty(supermarketDistances, 100);
+    const fastFoodMiles = self._getMinOrEmpty(fastFoodDistances, 100);
 
     const distanceToFood = Math.min(supermarketMiles, fastFoodMiles);
     let newState = null;
