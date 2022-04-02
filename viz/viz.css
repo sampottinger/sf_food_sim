@@ -3,7 +3,7 @@ footer {
 }
 
 header {
-  border-bottom: 1px solid #C0C0C0;
+  border-bottom: 1px solid #333;
 }
 
 html {
@@ -24,10 +24,23 @@ h1 {
   height: 14px;
 }
 
+.fade-in {
+  animation: fade 1.5s;
+  animation-iteration-count: 1;
+}
+
 .intro {
   padding-bottom: 10px;
-  border-top: 1px solid #555;
+  border-top: 3px solid #333;
   padding-top: 5px;
+}
+
+.intro a:link, .intro a:visited {
+  color: #333;
+}
+
+.intro a:hover, .intro a:active {
+  color: #000050;
 }
 
 .pulse-bg {
@@ -39,7 +52,7 @@ h1 {
 }
 
 .step {
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .step.later {
@@ -47,7 +60,7 @@ h1 {
 }
 
 .step-controls {
-  padding-top: 10px;
+  padding-top: 30px;
 }
 
 .step-controls .next {
@@ -60,13 +73,17 @@ h1 {
   padding: 2px;
 }
 
-.step-controls .next a:link, a:visited, a:hover, a:active {
-  color: #551A8B;
+.step-controls a:link, .step-controls a:visited, .step-controls a:hover, .step-controls a:active {
+  color: #000080;
 }
 
 .subcontrol {
   margin-bottom: 20px;
   padding-bottom: 20px;
+}
+
+.subcontrol.late {
+  opacity: 0;
 }
 
 .subcontrol .main-label {
@@ -86,7 +103,7 @@ h1 {
 
 #axisDisplay {
   width: 200px;
-  border-top: 1px dotted #C0C0C0;
+  border-top: 1px dotted #333;
   height: 14px;
   font-size: 12px;
   color: #A0A0A0;
@@ -121,6 +138,10 @@ h1 {
   background-color: #33a02c;
 }
 
+#skip-guide-msg {
+  display: none;
+}
+
 #skip-link {
     top: -20px;
     left: 0;
@@ -141,6 +162,12 @@ h1 {
   background-color: #1f78b4;
 }
 
+#toolSection {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+
 #unknownSummary {
   color: #A0A0A0;
 }
@@ -149,15 +176,13 @@ h1 {
   background-color: #C0C0C0;
 }
 
-#toolSection {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #C0C0C0;
+#vizCanvas {
+  opacity: 0;
 }
 
 @media (max-width: 1000px) {
   #controlArea {
-    border-top: 1px dotted #C0C0C0;
+    border-top: 1px dotted #333;
     padding-top: 20px;
   }
 
@@ -177,6 +202,11 @@ h1 {
     border-left: 1px dotted #C0C0C0;
     padding-left: 10px;
   }
+}
+
+@keyframes fade {
+   0% {opacity: 0;}
+   100% {opacity: 1;}
 }
 
 @keyframes pulse {

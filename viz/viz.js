@@ -68,6 +68,26 @@ class Presenter {
   }
 
   /**
+   * Indicate if fast food entites should be shown / used.
+   *
+   * @param newFastFoodEnabled True if they should be enabled and false otherwise.
+   */
+  setFastFoodEnabled(newFastFoodEnabled) {
+    const self = this;
+    self._entitySet.setFastFoodEnabled(newFastFoodEnabled);
+  }
+
+  /**
+   * Indicate if supermarket entites should be shown / used.
+   *
+   * @param newSupermarketEnabled True if they should be enabled and false otherwise.
+   */
+  setSupermarketEnabled(newSupermarketEnabled) {
+    const self = this;
+    self._entitySet.setSupermarketEnabled(newSupermarketEnabled);
+  }
+
+  /**
    * Draw all entities within the visualization / simulation.
    */
   draw() {
@@ -77,7 +97,7 @@ class Presenter {
 
     self._entitySet.getHomes().forEach((home) => {
       const color = {
-        "unknown": "#EAEAEA",
+        "unknown": "#C0C0C0",
         "supermarket": "#A6CEE3",
         "fastFood": "#B2DF8A"
       }[home.getState()];
@@ -513,6 +533,11 @@ function showBayview(presenter) {
 }
 
 
+function showHuntersPoint(presenter) {
+  presenter.addOverlay(580, 400, 40);
+}
+
+
 /**
  * Display an overlay circle over Sunset.
  *
@@ -543,6 +568,43 @@ function pulseControls(presenter) {
 }
 
 
+function addFadeIn(targetId) {
+  const target = document.getElementById(targetId);
+  const originalClassName = target.className;
+  const fadeInPresent = originalClassName.indexOf("fade-in") != -1;
+  const newClassName = fadeInPresent ? originalClassName : originalClassName + " fade-in";
+
+  target.className = newClassName;
+  target.style.opacity = "1";
+}
+
+
+function showMap(presenter) {
+  addFadeIn("vizCanvas");
+}
+
+
+function enableSupermarkets(presenter) {
+  presenter.setSupermarketEnabled(true);
+}
+
+
+function enableFastFood(presenter) {
+  presenter.setFastFoodEnabled(true);
+}
+
+
+function showSummary(presenter) {
+  addFadeIn("summaryPanel");
+}
+
+
+function showControls(presenter) {
+  addFadeIn("constructPanel");
+  addFadeIn("distancePanel");
+}
+
+
 /**
  * Start the tutorial sequence.
  *
@@ -552,12 +614,21 @@ function initTutorial(presenter) {
 
   const extraActions = {
     "step1": () => { hideAllHints(presenter); },
-    "step2": () => { hideAllHints(presenter); },
-    "step3": () => { hideAllHints(presenter); showBayview(presenter); },
-    "step4": () => { hideAllHints(presenter); showTwinPeaks(presenter); },
-    "step5": () => { hideAllHints(presenter); showSunset(presenter); },
-    "step6": () => { hideAllHints(presenter); pulseControls(presenter); },
-    "step7": () => { hideAllHints(presenter); }
+    "step2": () => { hideAllHints(presenter); showMap(presenter); },
+    "step3": () => {
+      hideAllHints(presenter);
+      enableSupermarkets(presenter);
+      showSummary(presenter);
+      showHuntersPoint(presenter);
+    },
+    "step4": () => {
+      hideAllHints(presenter);
+      enableFastFood(presenter);
+      showBayview(presenter);
+    },
+    "step5": () => { hideAllHints(presenter); showTwinPeaks(presenter); },
+    "step6": () => { hideAllHints(presenter); showSunset(presenter); },
+    "step7": () => { hideAllHints(presenter); showControls(presenter); }
   };
 
   function addListeners(target) {
@@ -572,8 +643,24 @@ function initTutorial(presenter) {
     });
   }
 
+  function skipIntro() {
+    document.getElementById("skip-guide-msg").style.display = "block";
+    document.getElementById("guide-contents").style.display = "none";
+    showMap(presenter);
+    enableSupermarkets(presenter);
+    enableFastFood(presenter);
+    showSummary(presenter);
+    showControls(presenter);
+  }
+
   document.querySelectorAll(".previous").forEach(addListeners);
   document.querySelectorAll(".next").forEach(addListeners);
+  document.getElementById("skipGuideLink").addEventListener("click", (event) => {
+    skipIntro();
+  });
+  document.getElementById("skip-link").addEventListener("click", (event) => {
+    skipIntro();
+  });
 }
 
 
