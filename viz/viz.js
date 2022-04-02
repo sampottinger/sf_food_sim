@@ -77,7 +77,7 @@ class Presenter {
 
     self._entitySet.getHomes().forEach((home) => {
       const color = {
-        "unknown": "#EAEAEA",
+        "unknown": "#C0C0C0",
         "supermarket": "#A6CEE3",
         "fastFood": "#B2DF8A"
       }[home.getState()];
