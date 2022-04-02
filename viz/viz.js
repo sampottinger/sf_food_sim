@@ -628,7 +628,12 @@ function initTutorial(presenter) {
     },
     "step5": () => { hideAllHints(presenter); showTwinPeaks(presenter); },
     "step6": () => { hideAllHints(presenter); showSunset(presenter); },
-    "step7": () => { hideAllHints(presenter); showControls(presenter); }
+    "step7": () => {
+      hideAllHints(presenter);
+      showControls(presenter);
+      pulseControls(presenter);
+    },
+    "step8": () => { hideAllHints(presenter); }
   };
 
   function addListeners(target) {
