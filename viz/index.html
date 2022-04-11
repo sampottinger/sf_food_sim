@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="step later" id="step3">
-            These filled in dots (<img src="./supermarket.png" alt="Screenshot of a supermarket in the simulation" class="example-img">) represent supermarkets. The denser northern part of the city offers many food options but there are some locations in SF with less access, especially in the less dense southern part of the city. For example, the simulation has circled Hunter's Point in the Bayview-Hunter's Point neighborhood which, <a href="https://www.sfpublicpress.org/high-housing-prices-undercut-aid-programs/" target="_blank">in addition to being one of the poorer areas</a>, is far from a supermarket.
+            These filled in dots (<img src="./supermarket.png" alt="Screenshot of a supermarket in the simulation" class="example-img">) represent supermarkets (<a href="#footerDetails">source: OSM, see below</a>). The denser northern part of the city offers many food options but there are some locations in SF with less access, especially in the less dense southern part of the city. For example, the simulation has circled Hunter's Point in the Bayview-Hunter's Point neighborhood which, <a href="https://www.sfpublicpress.org/high-housing-prices-undercut-aid-programs/" target="_blank">in addition to being one of the poorer areas</a>, is far from a supermarket.
             <div class="step-controls">
               <a href="#step2" current="step3" class="previous"><< Previous</a> / <a href="#step4" current="step3" class="next">Next >></a>
             </div>
@@ -103,12 +103,12 @@
           <div class="subcontrol late" id="distancePanel">
             <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
             <div><input class="slider" type="range" min="1.1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
-            <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket?</div>
+            <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket relative to the nearest fast food?</div>
           </div>
         </div>
       </div>
     </section>
-    <footer>
+    <footer id="footerDetails">
       <p>Made by <a href="https://gleap.org">Sam Pottinger</a>. By using this you agree to the <a href="https://github.com/sampottinger/sf_food_sim/blob/main/LICENSE">MIT License</a>.</p>
       <p>Uses fast food and supermarkets from <a href="https://www.openstreetmap.org">OpenStreetMap under the ODBL license</a>, filtering only for those with non-empty names to remove potential erroneous data. If the distance between a supermarket / fast food option is less than 0.1 miles, the supermarket is "chosen" by the "house" (ring) regardless of distance tollerance. Distances are straight line (as the crow flies) distance.</p>
       <p><a href="https://github.com/sampottinger/sf_food_sim">Open source code and data available</a> (MIT, ODBL). Simulation uses <a href="http://proj4js.org/">proj4js under the MIT license</a> as well as <a href="https://www.papaparse.com/">PapaParse under the MIT license</a>. <a href="https://stackoverflow.com/help/licensing">Some StackOverflow used under the CC-BY-SA license</a> (<a href="https://stackoverflow.com/questions/2450954">superliminary</a>, <a href="https://stackoverflow.com/questions/14560999">Nathan Lippi</a>). Uses <a href="https://colorbrewer2.org">ColorBrewer</a>.</p>
