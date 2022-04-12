@@ -320,16 +320,42 @@ class Presenter {
   }
 
   /**
+   * Determine which construction mode is selected by the user.
+   *
+   * @returns String describing current construction selection.
+   */
+  _getConstructionSelection() {
+    const self = this;
+
+    if (document.getElementById("supermarketRadio").checked) {
+      return "addSupermarket";
+    } else if (document.getElementById("fastFoodRadio").checked) {
+      return "addFastFood";
+    } else if (document.getElementById("delSupermarketRadio").checked) {
+      return "delSupermarket";
+    } else if (document.getElementById("delFastFoodRadio").checked) {
+      return "delFastFood";
+    } else {
+      return "";
+    }
+  }
+
+  /**
    * Callback for when the user has left clicked to add a building.
    */
   _onLeftClick(event) {
     const self = this;
 
-    if (document.getElementById("supermarketRadio").checked) {
-      self._onClickSupermarket(event);
-    } else {
-      self._onClickFastFood(event);
-    }
+    const constructionMode = self._getConstructionSelection();
+
+    const strategy = {
+      "addSupermarket": () => self._onClickSupermarketAdd(event),
+      "addFastFood": () => self._onClickFastFoodAdd(event),
+      "delSupermarket": () => self._onClickSupermarketDel(event),
+      "delFastFood": () => self._onClickFastFoodDel(event)
+    }[constructionMode];
+
+    strategy();
   }
 
   /**
@@ -338,7 +364,7 @@ class Presenter {
    * Callback for when the user left clicks to construct a new simulated
    * supermarket.
    */
-  _onClickSupermarket(event) {
+  _onClickSupermarketAdd(event) {
     const self = this;
 
     const mousePosition = self._getMousePos(event);
@@ -357,7 +383,7 @@ class Presenter {
    * Callback for when the user left clicks to construct a new simulated
    * fast food.
    */
-  _onClickFastFood(event) {
+  _onClickFastFoodAdd(event) {
     const self = this;
 
     const mousePosition = self._getMousePos(event);
@@ -365,6 +391,44 @@ class Presenter {
     const latLngSpace = rawProjectReverse(metersSpace);
 
     self._entitySet.addFastFoodAt(
+      latLngSpace["longitude"],
+      latLngSpace["latitude"]
+    );
+  }
+
+  /**
+   * Callback for click in the visualization canvas for deleting a supermarket.
+   *
+   * Callback for when the user left clicks to delete a new simulated
+   * supermarket.
+   */
+  _onClickSupermarketDel(event) {
+    const self = this;
+
+    const mousePosition = self._getMousePos(event);
+    const metersSpace = translateScalePointReverse(mousePosition);
+    const latLngSpace = rawProjectReverse(metersSpace);
+
+    self._entitySet.delSupermarketAt(
+      latLngSpace["longitude"],
+      latLngSpace["latitude"]
+    );
+  }
+
+  /**
+   * Callback for click in the visualization canvas for deleteing a fast food.
+   *
+   * Callback for when the user left clicks to delete a new simulated
+   * fast food.
+   */
+  _onClickFastFoodDel(event) {
+    const self = this;
+
+    const mousePosition = self._getMousePos(event);
+    const metersSpace = translateScalePointReverse(mousePosition);
+    const latLngSpace = rawProjectReverse(metersSpace);
+
+    self._entitySet.delFastFoodAt(
       latLngSpace["longitude"],
       latLngSpace["latitude"]
     );

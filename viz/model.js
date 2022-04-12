@@ -226,6 +226,28 @@ class EntitySet {
   }
 
   /**
+   * Delete fast food locations at a latitude and longitude.
+   *
+   * Delete fast food entities at a provided latitude and longitude,
+   * causing all homes to have their state updated.
+   *
+   * @param longitude Horizontal position in degrees space.
+   * @param latitude Vertical position in degrees space.
+   */
+  delFastFoodAt(longitude, latitude) {
+    const self = this;
+
+    const getDistanceToClick = (x) => findDistanceMiles(
+      {"longitude": longitude, "latitude": latitude},
+      {"longitude": x.getLongitude(), "latitude": x.getLatitude()}
+    );
+
+    self._fastFoods = self._fastFoods.filter((x) => getDistanceToClick(x) > 0.1);
+
+    self._setAllHomesUpdating();
+  }
+
+  /**
    * Get all of the supermarket entites in the simulation.
    *
    * @return Array of entities with the "supermarket" entity type.
@@ -258,6 +280,28 @@ class EntitySet {
       "static",
       false
     ));
+
+    self._setAllHomesUpdating();
+  }
+
+  /**
+   * Delete supermarket locations at a latitude and longitude.
+   *
+   * Delete supermarket entities at a provided latitude and longitude,
+   * causing all homes to have their state updated.
+   *
+   * @param longitude Horizontal position in degrees space.
+   * @param latitude Vertical position in degrees space.
+   */
+  delSupermarketAt(longitude, latitude) {
+    const self = this;
+
+    const getDistanceToClick = (x) => findDistanceMiles(
+      {"longitude": longitude, "latitude": latitude},
+      {"longitude": x.getLongitude(), "latitude": x.getLatitude()}
+    );
+
+    self._supermarkets = self._supermarkets.filter((x) => getDistanceToClick(x) > 0.1);
 
     self._setAllHomesUpdating();
   }
