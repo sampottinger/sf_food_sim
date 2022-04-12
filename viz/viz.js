@@ -529,7 +529,7 @@ function hideAllHints(presenter) {
  * @param presenter The presenter to manipulate.
  */
 function showBayview(presenter) {
-  presenter.addOverlay(460, 455, 60);
+  presenter.addOverlay(510, 450, 40);
 }
 
 
@@ -539,12 +539,12 @@ function showHuntersPoint(presenter) {
 
 
 /**
- * Display an overlay circle over Sunset.
+ * Display an overlay circle over Richmond.
  *
  * @param presenter The presenter to manipulate.
  */
-function showSunset(presenter) {
-  presenter.addOverlay(160, 300, 90);
+function showMerced(presenter) {
+  presenter.addOverlay(140, 460, 50);
 }
 
 
@@ -554,7 +554,7 @@ function showSunset(presenter) {
  * @param presenter The presenter to manipulate.
  */
 function showTwinPeaks(presenter) {
-  presenter.addOverlay(230, 425, 60);
+  presenter.addOverlay(280, 390, 60);
 }
 
 
@@ -627,7 +627,7 @@ function initTutorial(presenter) {
       showBayview(presenter);
     },
     "step5": () => { hideAllHints(presenter); showTwinPeaks(presenter); },
-    "step6": () => { hideAllHints(presenter); showSunset(presenter); },
+    "step6": () => { hideAllHints(presenter); showMerced(presenter); },
     "step7": () => {
       hideAllHints(presenter);
       showControls(presenter);

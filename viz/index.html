@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="step later" id="step4">
-            Of course, supermarkets aren't the only source of food and these filled in squares (<img src="./fastfood.png" alt="Screenshot of a fast food location in the simulation" class="example-img">) represent fast food locations. This tool simulates if different residential areas would choose to go to fast food or the supermarket based on distance to each. Note how fast food dominates the south east of SF and, for a lot of residents in this poorer area, fast food simply represents a much more convenient option.
+            Of course, supermarkets aren't the only source of food and these filled in squares (<img src="./fastfood.png" alt="Screenshot of a fast food location in the simulation" class="example-img">) represent fast food locations. This tool simulates if different residential areas would choose to go to fast food or the supermarket based on distance to each. Note the south east of SF and, for a lot of residents in this poorer area, fast food may just represent a more convenient option.
             <div class="step-controls">
               <a href="#step3" current="step4" class="previous"><< Previous</a> / <a href="#step5" current="step4" class="next">Next >></a>
             </div>
@@ -44,7 +44,7 @@
             </div>
           </div>
           <div class="step later" id="step6">
-            Finally, food deserts are often framed in terms of physical distance and income but public transit also plays a role. Consider the Sunset. While higher income relative to the Bayview, <a href="https://nextcity.org/urbanist-news/maps-public-transportation-access-poverty-equity" target="_blank">it sees poor transportation access</a>, indicating another way the layout of the city might "push" parts of its population to less healthy food options.
+            Finally, food deserts are often framed in terms of physical distance and income but public transit also plays a role. Consider this area near Lake Merced. While higher income relative to the Bayview, <a href="https://nextcity.org/urbanist-news/maps-public-transportation-access-poverty-equity" target="_blank">it sees poor transportation access</a>, indicating another way the layout of the city might influence eating habits.
             <div class="step-controls">
               <a href="#step5" current="step6" class="previous"><< Previous</a> / <a href="#step7" current="step6" class="next">Next >></a>
             </div>
@@ -102,7 +102,7 @@
           </div>
           <div class="subcontrol late" id="distancePanel">
             <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
-            <div><input class="slider" type="range" min="1.1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
+            <div><input class="slider" type="range" min="1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
             <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket?</div>
           </div>
         </div>
@@ -115,6 +115,7 @@
       <p>Preprocessing in <a href="https://www.python.org/">Python</a> uses <a href="https://jupyter.org/">Jupyter under the BSD license</a> and <a href="https://github.com/shapely/shapely">Shapely under the BSD license</a>.</p>
       <p>By using this page you agree to <a href="https://gleap.org/tos_privacy">terms and conditions / privacy policy</a>.</p>
       <p>Only intends to include SF. Of course, supermarkets exist to the south of the city. However, note that SF MUNI, the city transit system, <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">does not necessarily extend directly into those areas</a> such that transfer between systems would be needed.</p>
+      <p>Note that this visualization was updated on April 11 to include supermarkets and fast food contained in "ways" instead of "nodes" in OSM.</p>
     </footer>
   </body>
 
