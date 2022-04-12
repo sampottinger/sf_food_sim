@@ -532,7 +532,11 @@ function showBayview(presenter) {
   presenter.addOverlay(490, 460, 40);
 }
 
-
+/*
+ * Display an overlay circle over Hunter's Point.
+ *
+ * @param presenter The presenter to manipulate.
+ */
 function showHuntersPoint(presenter) {
   presenter.addOverlay(580, 400, 40);
 }
@@ -568,6 +572,11 @@ function pulseControls(presenter) {
 }
 
 
+/**
+ * Fade in an element by CSS.
+ *
+ * @param targetId String ID for the element to fade in (withough #).
+ */
 function addFadeIn(targetId) {
   const target = document.getElementById(targetId);
   const originalClassName = target.className;
@@ -579,16 +588,31 @@ function addFadeIn(targetId) {
 }
 
 
+/**
+ * Shortcut to show the map to the user.
+ *
+ * @param presenter The presenter to manipulate.
+ */
 function showMap(presenter) {
   addFadeIn("vizCanvas");
 }
 
 
+/**
+ * Shortcut to let the user see the supermarket locations.
+ *
+ * @param presenter The presenter to manipulate.
+ */
 function enableSupermarkets(presenter) {
   presenter.setSupermarketEnabled(true);
 }
 
 
+/**
+ * Shortcut to let the user see the fast food locations.
+ *
+ * @param presenter The presenter to manipulate.
+ */
 function enableFastFood(presenter) {
   presenter.setFastFoodEnabled(true);
 }
@@ -599,6 +623,11 @@ function showSummary(presenter) {
 }
 
 
+/**
+ * Shortcut to show the user the controls for the visualization.
+ *
+ * @param presenter The presenter to manipulate.
+ */
 function showControls(presenter) {
   addFadeIn("constructPanel");
   addFadeIn("distancePanel");
