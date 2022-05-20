@@ -529,7 +529,7 @@ function hideAllHints(presenter) {
  * @param presenter The presenter to manipulate.
  */
 function showBayview(presenter) {
-  presenter.addOverlay(460, 455, 60);
+  presenter.addOverlay(475, 430, 40);
 }
 
 
@@ -544,7 +544,7 @@ function showHuntersPoint(presenter) {
  * @param presenter The presenter to manipulate.
  */
 function showSunset(presenter) {
-  presenter.addOverlay(160, 300, 90);
+  presenter.addOverlay(160, 290, 80);
 }
 
 
