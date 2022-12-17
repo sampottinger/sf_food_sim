@@ -4,7 +4,7 @@ License: MIT
 """
 import sys
 
-import luigi
+import luigi  # type: ignore
 import requests
 
 NUM_ARGS = 2
@@ -49,6 +49,3 @@ class ExecuteOverpassTask(luigi.Task):
         """
         raise NotImplementedError('Use implementor.')
 
-
-if __name__ == '__main__':
-    main()

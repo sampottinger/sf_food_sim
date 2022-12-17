@@ -5,7 +5,7 @@ License: MIT
 import csv
 import typing
 
-import luigi
+import luigi  # type: ignore
 
 OUTPUT_FIELDS = ['latitude', 'longitude', 'featureType']
 

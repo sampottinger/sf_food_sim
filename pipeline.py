@@ -7,7 +7,7 @@ import itertools
 import os.path
 import typing
 
-import luigi
+import luigi  # type: ignore
 
 import overpass.scripts.query
 import transform.scripts.combine

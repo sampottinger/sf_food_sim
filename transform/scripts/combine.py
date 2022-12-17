@@ -6,7 +6,7 @@ import csv
 import functools
 import typing
 
-import luigi
+import luigi  # type: ignore
 
 
 class CombineCsvTask(luigi.Task):

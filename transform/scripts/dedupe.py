@@ -10,7 +10,7 @@ import itertools
 import math
 import typing
 
-import luigi
+import luigi  # type: ignore
 
 ALIGN_VAL = 0.0027
 DUP_MAX_DISTANCE = 0.001
@@ -19,7 +19,7 @@ USAGE_STR = 'python dedupe.py [source] [destination]'
 VERBOSE = True
 
 
-class Point(Point):
+class Point:
     """Simple structure representing a single point feature."""
 
     def __init__(self, feature_type: str, latitude: float, longitude: float):
@@ -60,7 +60,7 @@ class Point(Point):
         """
         return self._longitude
     
-    def get_distance(self, other: typing.ClassVar['Point']) -> float:
+    def get_distance(self, other: 'Point') -> float:
         """Get the distance between this point and another point.
         
         Args:
