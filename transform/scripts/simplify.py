@@ -69,17 +69,14 @@ class SimplifyCsvTask(luigi.Task):
         raise NotImplementedError('Use implementor.')
         
     def _transform_record(self, target: typing.Dict) -> typing.Dict:
-        """Convert a record and check that its fields are parseable to the right types.
-        
-        Filter down to just latitude and longitude information, checking that it is parseable as a
-        floating point value and adding the feature type name.
+        """Convert a record, filtering down to just latitude and longitude information.
 
         Returns:
             Standardized and simplified record.
         """
         return {
-            'latitude': float(target['@lat']),
-            'longitude': float(target['@lon']),
+            'latitude': target['@lat'],
+            'longitude': target['@lon'],
             'featureType': self.get_feature_type()
         }
             
