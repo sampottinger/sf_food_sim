@@ -7,6 +7,7 @@ import luigi
 
 import overpass.scripts.query
 import transform.scripts.combine
+import transform.scripts.dedupe
 import transform.scripts.simplify
 
 
@@ -62,7 +63,7 @@ class PrepareAndCheckNamedFeaturesTask(luigi.Task):
             script_info
         )
 
-        raw_combined_output = os.path.join('working', feature_name + '_combined_raw.csv')
+        raw_combined_output = feature_name + '_combined_raw.csv'
         combine_raw_task = self._make_combine_task(
             query_tasks,
             raw_combined_output,
@@ -98,7 +99,7 @@ class PrepareAndCheckNamedFeaturesTask(luigi.Task):
 
         input_tasks_realized = list(input_tasks)
         setattr(new_task, 'get_targets', lambda: input_tasks_realized)
-        setattr(new_task, 'get_output_loc', lambda: output_loc)
+        setattr(new_task, 'get_output_loc', lambda: os.path.join('working', output_loc))
 
         return new_task
     
@@ -112,6 +113,15 @@ class PrepareAndCheckNamedFeaturesTask(luigi.Task):
         new_task = new_type()
 
         setattr(new_task, 'get_input_task', lambda: input_task)
-        setattr(new_task, 'get_output_loc', lambda: output_loc)
+        setattr(new_task, 'get_output_loc', lambda: os.path.join('working', output_loc))
         setattr(new_task, 'get_feature_type', lambda: feature_name)
         return new_task
+
+
+class DedupeNamedTask(transform.scripts.dedupe.DedupeTask):
+
+    def requires(self):
+        return PrepareAndCheckNamedFeaturesTask()
+    
+    def output(self):
+        return luigi.LocalTarget(os.path.join('working', 'named_dedupe.csv'))

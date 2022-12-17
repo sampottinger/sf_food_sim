@@ -22,11 +22,15 @@ class SimplifyCsvTask(luigi.Task):
         keys = input_records[0].keys()
 
         transformed = map(lambda x: self._transform_record(x), input_records)
+        transformed_valid = filter(
+            lambda x: x['latitude'] != '' and x['longitude'] != '',
+            transformed
+        )
 
         with self.output().open('w') as f:
             writer = csv.DictWriter(f, fieldnames=OUTPUT_FIELDS)
             writer.writeheader()
-            writer.writerows(transformed)
+            writer.writerows(transformed_valid)
     
     def get_input_task(self) -> luigi.Task:
         raise NotImplementedError('Use implementor.')
