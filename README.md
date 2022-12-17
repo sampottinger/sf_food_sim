@@ -18,7 +18,18 @@ Available online at https://foodsimsf.com.
 
 Local Development Environment
 --------------------------------------------------------------------------------
-Simply run any local HTTP server capable of serving static files in the viz folder. For example, use `python -m http.server` and navigate to http://localhost:8000/. Note that preprocessing scripts are in `transform` as well as [overpass scripts](https://wiki.openstreetmap.org/wiki/Overpass_API) in `overpass`.
+Simply run any local HTTP server capable of serving static files in the viz folder. For example, use `python -m http.server` and navigate to http://localhost:8000/.
+
+<br>
+
+Updating the dataset
+--------------------------------------------------------------------------------
+The data processing pipeline providing source information for the visualization can be run with the following:
+
+```
+pip install -r requirements.txt
+bash run_pipeline.sh
+```
 
 <br>
 
