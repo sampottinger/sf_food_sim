@@ -1,3 +1,7 @@
+"""Simple utility to concatinate CSV files.
+
+License: MIT
+"""
 import csv
 import functools
 import typing
@@ -6,14 +10,23 @@ import luigi
 
 
 class CombineCsvTask(luigi.Task):
+    """Luigi task combining the rows of multiple CSV files together."""
     
     def requires(self):
+        """Get the tasks whose CSV output should be combined."""
         return self.get_targets()
     
     def output(self):
+        """Create a local target for get_output_loc"""
         return luigi.LocalTarget(self.get_output_loc())
     
     def run(self):
+        """Load all of the input CSV files and write the superset of columns and rows to a new file.
+        
+        Load all of the input CSV files and write the superset of columns and concatination of rows
+        to a new file such that the number of rows in the output file is one plus the number of
+        non-header rows found in all of the input files.
+        """
         input_records = []
 
         for target in self.input():
@@ -34,7 +47,9 @@ class CombineCsvTask(luigi.Task):
             writer.writerows(output_records)
     
     def get_targets(self) -> typing.Iterable[luigi.Task]:
+        """Get the dependencies whose CSV outputs should be concatinated."""
         raise NotImplementedError('Use implementor.')
     
     def get_output_loc(self) -> str:
+        """Get the location where the concatinated file should be written."""
         raise NotImplementedError('Use implementor.')
