@@ -222,12 +222,16 @@ class FenceTask(transform.scripts.dedupe.DedupeTask):
             parsed = map(lambda x: self._parse(x), reader)
             
             clipped_top = filter(
-                lambda x: x['longitude'] < -122.37 or x['latitude'] < 37.8,
+                lambda x: x['longitude'] < -122.38 or x['latitude'] < 37.8,
                 parsed
             )
-            clipped = filter(
+            clipped_bottom = filter(
                 lambda x: x['longitude'] < -122.37 or x['latitude'] > 37.725,
                 clipped_top
+            )
+            clipped = filter(
+                lambda x: x['latitude'] > 37.702,
+                clipped_bottom
             )
 
             with self.output().open('w') as f_out:
