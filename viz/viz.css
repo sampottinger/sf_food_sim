@@ -143,15 +143,15 @@ h1 {
 }
 
 #skip-link {
-    top: -20px;
-    left: 0;
-    position: absolute;
+  top: -20px;
+  left: 0;
+  position: absolute;
 }
 
 #skip-link:focus {
-    top: 10px;
-    background: #E0E0E0;
-    padding: 3px;
+  top: 10px;
+  background: #E0E0E0;
+  padding: 3px;
 }
 
 #supermarketSummary {
@@ -186,8 +186,9 @@ h1 {
     padding-top: 20px;
   }
 
-  #toolSection {
+  #toolSection #displayArea {
     width: 100%;
+    overflow-x: auto;
   }
 }
 
