@@ -125,3 +125,38 @@ class DedupeNamedTask(transform.scripts.dedupe.DedupeTask):
     
     def output(self):
         return luigi.LocalTarget(os.path.join('working', 'named_dedupe.csv'))
+
+
+class FenceTask(transform.scripts.dedupe.DedupeTask):
+
+    def requires(self):
+        return DedupeNamedTask()
+    
+    def output(self):
+        return luigi.LocalTarget(os.path.join('working', 'named_fenced.csv'))
+    
+    def run(self):
+        with self.input().open('r') as f_in:
+            reader = csv.DictReader(f_in)
+            parsed = map(lambda x: self._parse(x), reader)
+            
+            clipped_top = filter(
+                lambda x: x['longitude'] < -122.37 or x['latitude'] < 37.8,
+                parsed
+            )
+            clipped = filter(
+                lambda x: x['longitude'] < -122.37 or x['latitude'] > 37.725,
+                clipped_top
+            )
+
+            with self.output().open('w') as f_out:
+                writer = csv.DictWriter(f_out, fieldnames=['latitude', 'longitude', 'featureType'])
+                writer.writeheader()
+                writer.writerows(clipped)
+
+    def _parse(self, target: typing.Dict) -> typing.Dict:
+        return {
+            'featureType': target['featureType'],
+            'latitude': float(target['latitude']),
+            'longitude': float(target['longitude'])
+        }

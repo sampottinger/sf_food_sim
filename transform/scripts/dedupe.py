@@ -5,7 +5,7 @@ import typing
 
 import luigi
 
-ALIGN_VAL = 0.003
+ALIGN_VAL = 0.0027
 DUP_MAX_DISTANCE = 0.001
 NUM_ARGS = 2
 USAGE_STR = 'python dedupe.py [source] [destination]'
@@ -73,8 +73,8 @@ class DedupeTask(luigi.Task):
             if feature_type == 'home':
                 point = Point(
                     feature_type,
-                    round(point.get_latitude() / ALIGN_VAL) * ALIGN_VAL,
-                    round(point.get_longitude() / ALIGN_VAL) * ALIGN_VAL
+                    math.floor(point.get_latitude() / ALIGN_VAL) * ALIGN_VAL,
+                    math.floor(point.get_longitude() / ALIGN_VAL) * ALIGN_VAL
                 )
 
             target_list = already_seen[feature_type]
