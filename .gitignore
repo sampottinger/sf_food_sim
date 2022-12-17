@@ -1,3 +1,5 @@
 .DS_Store
 transform/*.csv
 transform/.ipynb_checkpoints
+*.pyc
+working
