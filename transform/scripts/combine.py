@@ -22,13 +22,14 @@ class CombineCsvTask(luigi.Task):
         
         keys = map(lambda x: set(x.keys()), input_records)
         all_keys = functools.reduce(lambda x, y: x.union(y), keys)
+        all_keys_valid = filter(lambda x: x is not None, all_keys)
 
         def make_output_record(input_row: typing.Dict) -> typing.Dict:
-            return dict(map(lambda key: input_row.get(key, ''), all_keys))
+            return dict(map(lambda key: input_row.get(key, ''), all_keys_valid))
         
         output_records = map(make_output_record, input_records)
-        with self.output().write('w') as f:
-            writer = csv.DictWriter(f, fieldnames=sorted(all_keys))
+        with self.output().open('w') as f:
+            writer = csv.DictWriter(f, fieldnames=sorted(all_keys_valid))
             writer.writeheader()
             writer.writerows(output_records)
     

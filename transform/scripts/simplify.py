@@ -3,6 +3,8 @@ import typing
 
 import luigi
 
+OUTPUT_FIELDS = ['latitude', 'longitude', 'featureType']
+
 
 class SimplifyCsvTask(luigi.Task):
     
@@ -22,7 +24,7 @@ class SimplifyCsvTask(luigi.Task):
         transformed = map(lambda x: self._transform_record(x), input_records)
 
         with self.output().open('w') as f:
-            writer = csv.DictWriter(f, fieldnames=sorted(keys))
+            writer = csv.DictWriter(f, fieldnames=OUTPUT_FIELDS)
             writer.writeheader()
             writer.writerows(transformed)
     
@@ -37,8 +39,8 @@ class SimplifyCsvTask(luigi.Task):
         
     def _transform_record(self, target: typing.Dict) -> typing.Dict:
         return {
-            'latitude': target['lat'],
-            'longitude': target['lon'],
+            'latitude': target['@lat'],
+            'longitude': target['@lon'],
             'featureType': self.get_feature_type()
         }
             

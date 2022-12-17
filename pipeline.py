@@ -37,10 +37,10 @@ class PrepareAndCheckNamedFeaturesTask(luigi.Task):
     
     def run(self):
         with self.input().open('r') as f_in:
-            reader = csv.DictReader(f)
+            reader = csv.DictReader(f_in)
 
             with self.output().open('w') as f_out:
-                writer = csv.DictWriter(f, fieldnames=['latitude', 'longitude', 'featureType'])
+                writer = csv.DictWriter(f_out, fieldnames=['latitude', 'longitude', 'featureType'])
                 writer.writeheader()
                 writer.writerows(reader)
     
