@@ -3,5 +3,3 @@ transform/*.csv
 transform/.ipynb_checkpoints
 *.pyc
 working
-
-viz/combined.csv
