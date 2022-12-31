@@ -25,6 +25,7 @@ class Presenter {
     self._overlayX = null;
     self._overlayY = null;
     self._overlayRadius = null;
+    self._constructionCost = 0;
 
     self._canvas = document.getElementById("vizCanvas");
     self._ctx = self._canvas.getContext("2d");
@@ -155,6 +156,7 @@ class Presenter {
     enableFastFood(self);
     showSummary(self);
     showControls(self);
+    self._constructionCost = 0;
   }
 
   /**
@@ -338,6 +340,21 @@ class Presenter {
     self._unknownBarDisplay.style.width = unknownWidth;
     self._supermarketBarDisplay.style.width = supermarketWidth;
     self._fastFoodBarDisplay.style.width = fastFoodWidth;
+    
+    const transitSpend = Math.pow((self._allowedTolleranceSlider.value - 1) * 50, 1.3);
+    const constructionSpend = self._constructionCost * 30;
+    const totalSpend = constructionSpend + transitSpend;
+    document.getElementById("percentSpent").innerHTML = Math.round(totalSpend) + "%";
+    document.getElementById("transitPercent").innerHTML = Math.round(transitSpend) + "%";
+    document.getElementById("constructionPercent").innerHTML = Math.round(constructionSpend) + "%";
+    
+    if (totalSpend > 100) {
+      document.getElementById("statusEmoji").innerHTML = "💰 Oops! You went over budget.";
+    } else if (percentSuperMarket >= 80) {
+      document.getElementById("statusEmoji").innerHTML = "🏆 Success!";
+    } else {
+      document.getElementById("statusEmoji").innerHTML = "⏳ Keep going!";
+    }
   }
 
   /**
@@ -396,6 +413,8 @@ class Presenter {
       latLngSpace["longitude"],
       latLngSpace["latitude"]
     );
+    
+    self._constructionCost += 1;
   }
 
   /**
@@ -415,6 +434,8 @@ class Presenter {
       latLngSpace["longitude"],
       latLngSpace["latitude"]
     );
+    
+    self._constructionCost += 1;
   }
 
   /**
@@ -434,6 +455,8 @@ class Presenter {
       latLngSpace["longitude"],
       latLngSpace["latitude"]
     );
+    
+    self._constructionCost += 0.1;
   }
 
   /**
@@ -453,6 +476,8 @@ class Presenter {
       latLngSpace["longitude"],
       latLngSpace["latitude"]
     );
+    
+    self._constructionCost += 0.1;
   }
 
   /**
