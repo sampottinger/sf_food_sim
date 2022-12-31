@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="step later" id="step2">
-            What does food access look like in <a href="https://usabynumbers.com/richest-cities-in-the-us/" target="_blank">one of the wealthiest cities in the US</a>? This map shows all of the areas with housing within San Francisco. This guide will walk through different neighborhoods in the city and also give you a chance to explore what behavior changes or new construction can help with food access.
+            What does food access look like in <a href="https://usabynumbers.com/richest-cities-in-the-us/" target="_blank">one of the wealthiest cities in the US</a>? This map shows all of the areas with housing within San Francisco. Your job as a city planner is increase the chances people will choose healthy food.
             <div class="step-controls">
               <a href="#step1" current="step2" class="previous"><< Previous</a> / <a href="#step3" current="step2" class="next">Next >></a>
             </div>
@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="step later" id="step7">
-            Now that you know what some of the problems are, how might you make it better? Use the simulation controls to add new supermarkets (or fast food locations) to simulate programs like building subsidies. Also, use the slider to simulate programs (like transit subsidies) which might encourage residents to travel further to get to a supermarket relative to the nearest fast food option.
+            Now that you know what some of the problems are, how might you make it better? Use the simulation controls to add new supermarkets (or fast food locations) to simulate programs like building subsidies. Also, use the slider to simulate programs (like transit subsidies) which might encourage residents to travel further to get to a supermarket relative to the nearest fast food option. Your goal is to get 85% to choose the supermarket but be careful: you have a budget.
             <div class="step-controls">
               <a href="#step6" current="step7" class="previous"><< Previous</a> / <a href="#step8" current="step7" class="next">Next >></a>
             </div>
@@ -62,7 +62,7 @@
             </div>
           </div>
           <div class="step later" id="step9">
-            That's it for the intro! Want more ideas and tools at the intersection of society, systems, data science, and game design? Sign up for my <a href="https://gleap.org/tos_privacy">privacy-respecting</a> low-volume free <a href="https://tinyletter.com/SamPottinger">newsletter</a>!
+            That's it for the intro! Want more ideas and tools at the intersection of society, systems, data science, and game design? Sign up for my <a href="https://gleap.org/tos_privacy">privacy-respecting</a> low-volume free <a href="https://tinyletter.com/SamPottinger">newsletter</a>! Good luck getting to 85%!
             <div class="step-controls">
               <a href="#step8" current="step9" class="previous"><< Previous</a>
             </div>
@@ -112,6 +112,9 @@
             <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
             <div><input class="slider" type="range" min="1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
             <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket relative to the nearest fast food?</div>
+          </div>
+          <div class="subcontrol late" id="goalPanel">
+              <span id="statusEmoji">Keep going! </span> You have spent <span id="percentSpent">0%</span> of your budget (<span id="constructionPercent">0%</span> on rezoining and construction subsidy, <span id="transitPercent">0%</span> on transit improvement and subsidy).
           </div>
         </div>
       </div>
