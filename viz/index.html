@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="step later" id="step2">
-            What does food access look like in <a href="https://usabynumbers.com/richest-cities-in-the-us/" target="_blank">one of the wealthiest cities in the US</a>? This map shows all of the areas with housing within San Francisco. This guide will walk through different neighborhoods in the city and also give you a chance to explore what behavior changes or new construction can help with food access.
+            What does food access look like in <a href="https://usabynumbers.com/richest-cities-in-the-us/" target="_blank">one of the wealthiest cities in the US</a>? This map shows all of the areas with housing within San Francisco. Your job as a city planner is increase the chances people will choose healthy food.
             <div class="step-controls">
               <a href="#step1" current="step2" class="previous"><< Previous</a> / <a href="#step3" current="step2" class="next">Next >></a>
             </div>
@@ -56,13 +56,13 @@
             </div>
           </div>
           <div class="step later" id="step8">
-            You may also consider reviewing maps of <a href="https://www.city-data.com/income/income-San-Francisco-California.html">income in the area</a>, <a href="https://nickconwayblog.wordpress.com/2016/11/13/the-disappearance-of-san-franciscos-middle-class-neighborhoods-1990-2010/">how neighborhood wealth has changed over time</a>, and the <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">layout of SF's mass transit</a>.
+            Your goal is to get 80% to choose the supermarket 🏆 but be careful: you have a budget 💰. Want to learn more? You may also consider reviewing maps of <a href="https://www.city-data.com/income/income-San-Francisco-California.html">income in the area</a>, <a href="https://nickconwayblog.wordpress.com/2016/11/13/the-disappearance-of-san-franciscos-middle-class-neighborhoods-1990-2010/">how neighborhood wealth has changed over time</a>, and the <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">layout of SF's mass transit</a>.
             <div class="step-controls">
               <a href="#step7" current="step8" class="previous"><< Previous</a> / <a href="#step9" current="step8" class="next">Next >></a>
             </div>
           </div>
           <div class="step later" id="step9">
-            That's it for the intro! Want more ideas and tools at the intersection of society, systems, data science, and game design? Sign up for my <a href="https://gleap.org/tos_privacy">privacy-respecting</a> low-volume free <a href="https://tinyletter.com/SamPottinger">newsletter</a>!
+            That's it for the intro! Want more ideas and tools at the intersection of society, systems, data science, and game design? Sign up for my <a href="https://gleap.org/tos_privacy">privacy-respecting</a> low-volume free <a href="https://tinyletter.com/SamPottinger">newsletter</a>! Good luck getting to 80%!
             <div class="step-controls">
               <a href="#step8" current="step9" class="previous"><< Previous</a>
             </div>
@@ -113,6 +113,10 @@
             <div><input class="slider" type="range" min="1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
             <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket relative to the nearest fast food?</div>
           </div>
+          <div class="subcontrol late" id="goalPanel">
+            <div class="main-label">Progress: </div>
+            <span id="statusEmoji">Keep going! ⏳</span> You have spent <span id="percentSpent">0%</span> of your budget (<span id="constructionPercent">0%</span> on rezoining and construction subsidy 🚜, <span id="transitPercent">0%</span> on transit improvement and subsidy 🚊). <a href="#vizCavnas" id="resetLink">Reset</a>
+          </div>
         </div>
       </div>
     </section>
@@ -131,7 +135,7 @@
   <script type="text/javascript" src="./proj4js.js#cache202205201"></script>
   <script type="text/javascript" src="./papaparse.min.js#cache202205201"></script>
   <script type="text/javascript" src="./geo_util.js#cache202205201"></script>
-  <script type="text/javascript" src="./model.js#cache202205201"></script>
-  <script type="text/javascript" src="./viz.js#cache202205201"></script>
+  <script type="text/javascript" src="./model.js#cache20221231"></script>
+  <script type="text/javascript" src="./viz.js#cache20221231"></script>
 
 </html>

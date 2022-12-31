@@ -19,11 +19,13 @@ class Presenter {
   constructor(entitySet) {
     const self = this;
     self._entitySet = entitySet;
+    self._originalSet = entitySet.clone();
     self._overlayChange = false;
     self._hasOverlay = false;
     self._overlayX = null;
     self._overlayY = null;
     self._overlayRadius = null;
+    self._constructionCost = 0;
 
     self._canvas = document.getElementById("vizCanvas");
     self._ctx = self._canvas.getContext("2d");
@@ -63,6 +65,11 @@ class Presenter {
 
     self._canvas.addEventListener("click", (event) => {
       self._onLeftClick(event);
+      event.preventDefault();
+    });
+    
+    document.getElementById("resetLink").addEventListener("click", (event) => {
+      self.reset();
       event.preventDefault();
     });
   }
@@ -134,6 +141,22 @@ class Presenter {
       self._updateSummary();
       self._overlayChange = false;
     }
+  }
+  
+  /**
+   * Reset the simulation.
+   */
+  reset() {
+    const self = this;
+    self._entitySet = self._originalSet;
+    self._originalSet = self._originalSet.clone();
+    self._entitySet.invalidate();
+    showMap(self);
+    enableSupermarkets(self);
+    enableFastFood(self);
+    showSummary(self);
+    showControls(self);
+    self._constructionCost = 0;
   }
 
   /**
@@ -317,6 +340,21 @@ class Presenter {
     self._unknownBarDisplay.style.width = unknownWidth;
     self._supermarketBarDisplay.style.width = supermarketWidth;
     self._fastFoodBarDisplay.style.width = fastFoodWidth;
+    
+    const transitSpend = Math.pow((self._allowedTolleranceSlider.value - 1) * 50, 1.3);
+    const constructionSpend = self._constructionCost * 30;
+    const totalSpend = constructionSpend + transitSpend;
+    document.getElementById("percentSpent").innerHTML = Math.round(totalSpend) + "%";
+    document.getElementById("transitPercent").innerHTML = Math.round(transitSpend) + "%";
+    document.getElementById("constructionPercent").innerHTML = Math.round(constructionSpend) + "%";
+    
+    if (totalSpend > 100) {
+      document.getElementById("statusEmoji").innerHTML = "💰 Oops! You went over budget.";
+    } else if (percentSuperMarket >= 80) {
+      document.getElementById("statusEmoji").innerHTML = "🏆 Success!";
+    } else {
+      document.getElementById("statusEmoji").innerHTML = "⏳ Keep going!";
+    }
   }
 
   /**
@@ -375,6 +413,8 @@ class Presenter {
       latLngSpace["longitude"],
       latLngSpace["latitude"]
     );
+    
+    self._constructionCost += 1;
   }
 
   /**
@@ -394,6 +434,8 @@ class Presenter {
       latLngSpace["longitude"],
       latLngSpace["latitude"]
     );
+    
+    self._constructionCost += 1;
   }
 
   /**
@@ -413,6 +455,8 @@ class Presenter {
       latLngSpace["longitude"],
       latLngSpace["latitude"]
     );
+    
+    self._constructionCost += 0.1;
   }
 
   /**
@@ -432,6 +476,8 @@ class Presenter {
       latLngSpace["longitude"],
       latLngSpace["latitude"]
     );
+    
+    self._constructionCost += 0.1;
   }
 
   /**
@@ -695,6 +741,7 @@ function showSummary(presenter) {
 function showControls(presenter) {
   addFadeIn("constructPanel");
   addFadeIn("distancePanel");
+  addFadeIn("goalPanel");
 }
 
 
@@ -737,7 +784,10 @@ function initTutorial(presenter) {
       const newId = target.getAttribute("href").replace("#", "");
       document.getElementById(newId).style.display = "block";
 
-      extraActions[newId]();
+      const action = extraActions[newId];
+      if (action !== undefined) {
+        extraActions[newId]();
+      }
     });
   }
 
