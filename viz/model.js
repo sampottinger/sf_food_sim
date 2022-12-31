@@ -129,6 +129,22 @@ class Entity {
     const self = this;
     self._updating = updating;
   }
+  
+  /**
+   * Create a copy of this entity.
+   *
+   * @returns Copy of this entity.
+   */
+  clone() {
+    const self = this;
+    return new Entity(
+      self._longitude,
+      self._latitude,
+      self._type,
+      self._state,
+      self._updating
+    );
+  }
 
 }
 
@@ -146,14 +162,15 @@ class EntitySet {
    * @param fastFoods Array of entities with the "fastFood" entity type.
    * @param fastFoods Array of entities with the "supermarket" entity type.
    */
-  constructor(homes, fastFoods, supermarkets) {
+  constructor(homes, fastFoods, supermarkets, allowedDisparity, fastFoodEnabled,
+    supermarketEnabled) {
     const self = this;
     self._homes = homes;
     self._fastFoods = fastFoods;
     self._supermarkets = supermarkets;
-    self._allowedDistanceDisparity = 1;
-    self._fastFoodEnabled = false;
-    self._supermarketEnabled = false;
+    self._allowedDistanceDisparity = allowedDisparity !== undefined ? allowedDisparity : 1;
+    self._fastFoodEnabled = fastFoodEnabled !== undefined ? fastFoodEnabled : false;
+    self._supermarketEnabled = supermarketEnabled !== undefined ? supermarketEnabled : false;
   }
 
   /**
@@ -342,6 +359,23 @@ class EntitySet {
     self._allowedDistanceDisparity = distanceDisparity;
     self._setAllHomesUpdating();
   }
+  
+  /**
+   * Create a copy of this entity set.
+   *
+   * @returns Copy of this entity set.
+   */
+  clone() {
+    const self = this;
+    return new EntitySet(
+      self._homes.map((x) => x.clone()),
+      self._fastFoods.map((x) => x.clone()),
+      self._supermarkets.map((x) => x.clone()),
+      self._allowedDistanceDisparity,
+      self._fastFoodEnabled,
+      self._supermarketEnabled
+    );
+  }
 
   /**
    * Determine the min value from a collection or, if empty, return empty value.
@@ -416,6 +450,14 @@ class EntitySet {
   _setAllHomesUpdating() {
     const self = this;
     self._homes.forEach((x) => {x.setUpdating(true);});
+  }
+  
+  /**
+   * Force invalidate sim state.
+   */
+  invalidate() {
+    const self = this;
+    self._setAllHomesUpdating();
   }
 
 }

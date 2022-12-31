@@ -19,6 +19,7 @@ class Presenter {
   constructor(entitySet) {
     const self = this;
     self._entitySet = entitySet;
+    self._originalSet = entitySet.clone();
     self._overlayChange = false;
     self._hasOverlay = false;
     self._overlayX = null;
@@ -63,6 +64,11 @@ class Presenter {
 
     self._canvas.addEventListener("click", (event) => {
       self._onLeftClick(event);
+      event.preventDefault();
+    });
+    
+    document.getElementById("resetLink").addEventListener("click", (event) => {
+      self.reset();
       event.preventDefault();
     });
   }
@@ -134,6 +140,21 @@ class Presenter {
       self._updateSummary();
       self._overlayChange = false;
     }
+  }
+  
+  /**
+   * Reset the simulation.
+   */
+  reset() {
+    const self = this;
+    self._entitySet = self._originalSet;
+    self._originalSet = self._originalSet.clone();
+    self._entitySet.invalidate();
+    showMap(self);
+    enableSupermarkets(self);
+    enableFastFood(self);
+    showSummary(self);
+    showControls(self);
   }
 
   /**
@@ -695,6 +716,7 @@ function showSummary(presenter) {
 function showControls(presenter) {
   addFadeIn("constructPanel");
   addFadeIn("distancePanel");
+  addFadeIn("goalPanel");
 }
 
 
@@ -737,7 +759,10 @@ function initTutorial(presenter) {
       const newId = target.getAttribute("href").replace("#", "");
       document.getElementById(newId).style.display = "block";
 
-      extraActions[newId]();
+      const action = extraActions[newId];
+      if (action !== undefined) {
+        extraActions[newId]();
+      }
     });
   }
 
