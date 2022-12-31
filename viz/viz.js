@@ -349,11 +349,11 @@ class Presenter {
     document.getElementById("constructionPercent").innerHTML = Math.round(constructionSpend) + "%";
     
     if (totalSpend > 100) {
-      document.getElementById("statusEmoji").innerHTML = "💰 Oops! You went over budget.";
+      document.getElementById("statusEmoji").innerHTML = "Oops! You went over budget.";
     } else if (percentSuperMarket >= 80) {
-      document.getElementById("statusEmoji").innerHTML = "🏆 Success!";
+      document.getElementById("statusEmoji").innerHTML = "Success!";
     } else {
-      document.getElementById("statusEmoji").innerHTML = "⏳ Keep going!";
+      document.getElementById("statusEmoji").innerHTML = "Keep going!";
     }
   }
 
