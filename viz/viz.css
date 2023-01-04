@@ -139,6 +139,12 @@ h1 {
   background-color: #33a02c;
 }
 
+#goalPanel {
+  text-align: left;
+  border-bottom: 1px dotted #C0C0C0;
+  display: none;
+}
+
 #skip-guide-msg {
   display: none;
 }

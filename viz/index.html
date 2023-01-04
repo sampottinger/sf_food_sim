@@ -73,6 +73,10 @@
     </header>
     <section id="toolSection">
       <div id="displayArea" class="tool-area">
+        <div class="subcontrol late" id="goalPanel">
+          <div class="main-label">Progress: </div>
+          <span id="statusEmoji">Keep going!</span> You have spent <span id="percentSpent">0%</span> of your budget (<span id="constructionPercent">0%</span> on rezoining and construction subsidy, <span id="transitPercent">0%</span> on transit improvement and subsidy). Goal is 80% choosing supermarket. <a href="#vizCavnas" id="resetLink">Reset</a>
+        </div>
         <canvas id="vizCanvas" width="625" height="540"></canvas>
       </div>
       <div id="controlArea" class="tool-area">
@@ -112,10 +116,6 @@
             <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
             <div><input class="slider" type="range" min="1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
             <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket relative to the nearest fast food?</div>
-          </div>
-          <div class="subcontrol late" id="goalPanel">
-            <div class="main-label">Progress: </div>
-            <span id="statusEmoji">Keep going!</span> You have spent <span id="percentSpent">0%</span> of your budget (<span id="constructionPercent">0%</span> on rezoining and construction subsidy, <span id="transitPercent">0%</span> on transit improvement and subsidy). Goal is 80% choosing supermarket. <a href="#vizCavnas" id="resetLink">Reset</a>
           </div>
         </div>
       </div>

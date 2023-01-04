@@ -739,6 +739,9 @@ function showSummary(presenter) {
  * @param presenter The presenter to manipulate.
  */
 function showControls(presenter) {
+  const target = document.getElementById("goalPanel");
+  target.style.display = "block";
+  
   addFadeIn("constructPanel");
   addFadeIn("distancePanel");
   addFadeIn("goalPanel");
