@@ -465,7 +465,7 @@ class Presenter {
       latLngSpace["latitude"]
     );
     
-    self._constructionCost += 0.1;
+    self._constructionCost += 1.2;
   }
 
   /**
@@ -486,7 +486,7 @@ class Presenter {
       latLngSpace["latitude"]
     );
     
-    self._constructionCost += 0.1;
+    self._constructionCost += 1.2;
   }
 
   /**
