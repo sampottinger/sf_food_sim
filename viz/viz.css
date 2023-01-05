@@ -154,6 +154,7 @@ h1 {
   text-align: left;
   border-bottom: 1px dotted #C0C0C0;
   display: none;
+  padding-right: 10px;
 }
 
 #skip-guide-msg {
