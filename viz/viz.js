@@ -151,12 +151,14 @@ class Presenter {
     self._entitySet = self._originalSet;
     self._originalSet = self._originalSet.clone();
     self._entitySet.invalidate();
+    self._constructionCost = 0;
+    self._allowedTolleranceSlider.value = "1.0";
+
     showMap(self);
     enableSupermarkets(self);
     enableFastFood(self);
     showSummary(self);
     showControls(self);
-    self._constructionCost = 0;
   }
 
   /**
@@ -352,8 +354,12 @@ class Presenter {
       document.getElementById("statusEmoji").innerHTML = "Oops! You went over budget.";
     } else if (percentSuperMarket >= 80) {
       document.getElementById("statusEmoji").innerHTML = "Success!";
+      document.getElementById("goalImage").src = "./people/ribbon.png";
+      document.getElementById("goalImage").alt = "Picture of a blue ribbon.";
     } else {
       document.getElementById("statusEmoji").innerHTML = "Keep going!";
+      document.getElementById("goalImage").src = "./people/easel.png";
+      document.getElementById("goalImage").alt = "Picture of a graph going up and to the right.";
     }
   }
 
