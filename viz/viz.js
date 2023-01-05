@@ -154,6 +154,7 @@ class Presenter {
     self._constructionCost = 0;
     self._allowedTolleranceSlider.value = "1.0";
 
+    self._onTolleranceChange();
     showMap(self);
     enableSupermarkets(self);
     enableFastFood(self);
@@ -352,6 +353,8 @@ class Presenter {
     
     if (totalSpend > 100) {
       document.getElementById("statusEmoji").innerHTML = "Oops! You went over budget.";
+      document.getElementById("goalImage").src = "./people/budget.png";
+      document.getElementById("goalImage").alt = "Picture of dollar bill with red alert icon.";
     } else if (percentSuperMarket >= 80) {
       document.getElementById("statusEmoji").innerHTML = "Success!";
       document.getElementById("goalImage").src = "./people/ribbon.png";
