@@ -4,7 +4,7 @@
   <head>
     <title>SF Food Availability Simulation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./viz.css?v=20221231">
+    <link rel="stylesheet" href="./viz.css?v=202301044">
   </head>
 
   <body>
@@ -14,55 +14,82 @@
       <div class="intro">
         <div id="guide-contents">
           <div class="step" id="step1">
-            Cities impact our health in lots of ways and this includes how they provide access to nutrition. Consider <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/go-to-the-atlas/" target="_blank">food deserts</a> which are <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/documentation/" target="_blank">low income areas 1 mile or more away from healthy affordable food</a>. These regions are important for public health because, for residents in these areas, it can be challenging to maintain a good diet.
+            <div class="advisor">
+              <div class="image"><img src="./people/charlie.png" alt="Picture of Chief Charlie, the leader of the group who is a black man in a suit."></div>
+              <div class="message"><p>Hello new recruit! Welcome. I'm Chief Charlie... in charge of the team. As you know, cities impact our health in lots of ways and this includes how they provide access to nutrition.</p><p>Consider <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/go-to-the-atlas/" target="_blank">food deserts</a> which are <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/documentation/" target="_blank">low income areas 1 mile or more away from healthy affordable food</a>. These regions are important for public health because, for residents in these areas, it can be challenging to maintain a good diet. Our team is using urban planning to get people to good food.</p></div>
+            </div>
             <div class="step-controls">
               <a href="#toolSection" id="skipGuideLink">Skip Guide</a> / <a href="#step2" current="step1" class="next first">Guide: Next >></a>
             </div>
           </div>
           <div class="step later" id="step2">
-            What does food access look like in <a href="https://usabynumbers.com/richest-cities-in-the-us/" target="_blank">one of the wealthiest cities in the US</a>? This map shows all of the areas with housing within San Francisco. Your job as a city planner is increase the chances people will choose healthy food.
+            <div class="advisor">
+              <div class="image"><img src="./people/charlie.png" alt="Picture of Chief Charlie, the leader of the group who is a black man in a suit."></div>
+              <div class="message">Your assignment is <a href="https://usabynumbers.com/richest-cities-in-the-us/" target="_blank">one of the wealthiest cities in the US</a>: San Francisco. This map shows all of the areas with housing within San Francisco. Your job as a city planner is increase the chances people will choose healthy food. To help you, I've got two advisors along with me: Zoe Zoning and Tamara Transit.</div>
+            </div>
             <div class="step-controls">
               <a href="#step1" current="step2" class="previous"><< Previous</a> / <a href="#step3" current="step2" class="next">Next >></a>
             </div>
           </div>
           <div class="step later" id="step3">
-            These filled in dots (<img src="./supermarket.png" alt="Screenshot of a supermarket in the simulation" class="example-img">) represent supermarkets (<a href="#footerDetails">source: OSM, see below</a>). The denser northern part of the city offers many food options but there are some locations in SF with less access, especially in the less dense southern part of the city. For example, the simulation has circled Hunter's Point in the Bayview-Hunter's Point neighborhood which, <a href="https://www.sfpublicpress.org/high-housing-prices-undercut-aid-programs/" target="_blank">in addition to being one of the poorer areas</a>, is far from a supermarket.
+            <div class="advisor">
+              <div class="image"><img src="./people/zoe.png" alt="Picture of Zoe Zoning, advisor with long red dress and long black hair."></div>
+              <div class="message"><p>Hey there I'm Zoe Zoning and can help you get new projects / construction.</p><p>These filled in dots (<img src="./supermarket.png" alt="Screenshot of a supermarket in the simulation" class="example-img">) represent supermarkets (<a href="#footerDetails">source: OSM, see below</a>). The denser northern part of the city offers many food options but there are some locations in SF with less access, especially in the less dense southern part of the city. For example, the simulation has circled Hunter's Point in the Bayview-Hunter's Point neighborhood which, <a href="https://www.sfpublicpress.org/high-housing-prices-undercut-aid-programs/" target="_blank">in addition to being one of the poorer areas</a>, is far from a supermarket.</p></div>
+            </div>
             <div class="step-controls">
               <a href="#step2" current="step3" class="previous"><< Previous</a> / <a href="#step4" current="step3" class="next">Next >></a>
             </div>
           </div>
           <div class="step later" id="step4">
-            Of course, supermarkets aren't the only source of food and these filled in squares (<img src="./fastfood.png" alt="Screenshot of a fast food location in the simulation" class="example-img">) represent fast food locations. This tool simulates if different residential areas would choose to go to fast food or the supermarket based on distance to each. Note the south east of SF and, for a lot of residents in this poorer area, fast food may just represent a more convenient option.
+            <div class="advisor">
+              <div class="image"><img src="./people/zoe.png" alt="Picture of Zoe Zoning, advisor with long red dress and long black hair."></div>
+              <div class="message">Of course, supermarkets aren't the only source of food and these filled in squares (<img src="./fastfood.png" alt="Screenshot of a fast food location in the simulation" class="example-img">) represent fast food locations. This tool simulates if different residential areas would choose to go to fast food or the supermarket based on distance to each. Note the southeast of SF. For a lot of residents in this poorer area, fast food may just represent a more convenient option.</div>
+            </div>
             <div class="step-controls">
               <a href="#step3" current="step4" class="previous"><< Previous</a> / <a href="#step5" current="step4" class="next">Next >></a>
             </div>
           </div>
           <div class="step later" id="step5">
-            In contrast to the Bayview, other areas just to the west are both wealthier and offer more supermarket options. This demonstrates an interesting trend where sometimes income follows access: those with less financial resources to cope with distance to supermarkets are also sometimes those furthest from them.
+            <div class="advisor">
+              <div class="image"><img src="./people/zoe.png" alt="Picture of Zoe Zoning, advisor with long red dress and long black hair."></div>
+              <div class="message">In contrast to the Bayview, other areas just to the west are both wealthier and offer more supermarket options. This demonstrates an interesting trend where sometimes income follows access: those with less financial resources to cope with distance to supermarkets are also sometimes those furthest from them.</div>
+            </div>
             <div class="step-controls">
               <a href="#step4" current="step5" class="previous"><< Previous</a> / <a href="#step6" current="step5" class="next">Next >></a>
             </div>
           </div>
           <div class="step later" id="step6">
-            Finally, food deserts are often framed in terms of physical distance and income but public transit also plays a role. Consider this area near Lake Merced. While higher income relative to the Bayview, <a href="https://nextcity.org/urbanist-news/maps-public-transportation-access-poverty-equity" target="_blank">it sees poor transportation access</a>, indicating another way the layout of the city might influence eating habits.
+            <div class="advisor">
+              <div class="image"><img src="./people/tamara.png" alt="Picture of Tamara Transit, advisor a slim blue dress and longish hair."></div>
+              <div class="message"><p>Oh! Sorry to interrupt. I'm Tamara Transit and can help with transit improvements.</p><p>I just want to add that food deserts are often framed in terms of physical distance and income but public transit also plays a role. Consider this area near Lake Merced. While higher income relative to the Bayview, <a href="https://nextcity.org/urbanist-news/maps-public-transportation-access-poverty-equity" target="_blank">it sees poor transportation access</a>, indicating another way the layout of the city might influence eating habits.</p></div>
+            </div>
             <div class="step-controls">
               <a href="#step5" current="step6" class="previous"><< Previous</a> / <a href="#step7" current="step6" class="next">Next >></a>
             </div>
           </div>
           <div class="step later" id="step7">
-            Now that you know what some of the problems are, how might you as a new city planner make it better? Use the simulation controls to add new supermarkets (or fast food locations) to simulate programs like building subsidies. Also, use the slider to simulate programs (like transit subsidies) which might encourage residents to travel further to get to a supermarket relative to the nearest fast food option.
+            <div class="advisor">
+              <div class="image"><img src="./people/charlie.png" alt="Picture of Chief Charlie, the leader of the group who is a black man in a suit."></div>
+              <div class="message">Now that you know what some of the problems are, how might you as a new city planner make it better? Zoe can help you add new supermarkets (or fast food locations) through rezoining and building subsidies. Also, Tamara can help you explore transit subsidies and improvements which might encourage residents to travel further to get to a supermarket relative to the nearest fast food option.</div>
+            </div>
             <div class="step-controls">
               <a href="#step6" current="step7" class="previous"><< Previous</a> / <a href="#step8" current="step7" class="next">Next >></a>
             </div>
           </div>
           <div class="step later" id="step8">
-            Your goal is to get 80% to choose the supermarket but be careful: you have a budget.
+            <div class="advisor">
+              <div class="image"><img src="./people/charlie.png" alt="Picture of Chief Charlie, the leader of the group who is a black man in a suit."></div>
+              <div class="message">Your goal is to get 80% to choose the supermarket but be careful: you have a budget.</div>
+            </div>
             <div class="step-controls">
               <a href="#step7" current="step8" class="previous"><< Previous</a> / <a href="#step9" current="step8" class="next">Next >></a>
             </div>
           </div>
           <div class="step later" id="step9">
-            That's it for the intro! Want to learn more? You may also consider reviewing maps of <a href="https://www.city-data.com/income/income-San-Francisco-California.html">income in the area</a>, <a href="https://nickconwayblog.wordpress.com/2016/11/13/the-disappearance-of-san-franciscos-middle-class-neighborhoods-1990-2010/">how neighborhood wealth has changed over time</a>, and the <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">layout of SF's mass transit</a>.
+            <div class="advisor">
+              <div class="image"><img src="./people/eliot.png" alt="Picture of Eliot, a white man with short brown hair."></div>
+              <div class="message">I'm Eliot. I'm another recent recruit working in a nearby region. That's it for the intro but I just wanted to add that you may also consider reviewing maps of <a href="https://www.city-data.com/income/income-San-Francisco-California.html">income in the area</a>, <a href="https://nickconwayblog.wordpress.com/2016/11/13/the-disappearance-of-san-franciscos-middle-class-neighborhoods-1990-2010/">how neighborhood wealth has changed over time</a>, and the <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">layout of SF's mass transit</a>. My top-knotch urban designs take this information into account!</div>
+            </div>
             <div class="step-controls">
               <a href="#step8" current="step9" class="previous"><< Previous</a>
             </div>
@@ -75,7 +102,7 @@
       <div id="displayArea" class="tool-area">
         <div class="subcontrol late" id="goalPanel">
           <div class="main-label">Progress: </div>
-          <span id="statusEmoji">Keep going!</span> You have spent <span id="percentSpent">0%</span> of your budget (<span id="constructionPercent">0%</span> on rezoining and construction subsidy, <span id="transitPercent">0%</span> on transit improvement and subsidy). Goal is 80% choosing supermarket. <a href="#vizCavnas" id="resetLink">Reset</a>
+          <span id="statusEmoji">Keep going!</span> You have spent <span id="percentSpent">0%</span> of your budget (<span id="constructionPercent">0%</span> on rezoining and construction subsidy, <span id="transitPercent">0%</span> on transit improvement and subsidy). Goal: 80% choose supermarket. You can also <a href="#vizCavnas" id="resetLink">reset your design and try again</a>.
         </div>
         <canvas id="vizCanvas" width="625" height="540"></canvas>
       </div>
@@ -101,7 +128,7 @@
             </div>
           </div>
           <div class="subcontrol late" id="constructPanel">
-            <div class="main-label">Construct new: </div>
+            <div class="main-label">Building subsidy / rezoning: </div>
             <div>
               Left click (or tap) to construct / remove building.
               <div id="buildingSubPanel">
@@ -113,16 +140,16 @@
             </div>
           </div>
           <div class="subcontrol late" id="distancePanel">
-            <div><label for="allowedDistance" class="main-label">Distance tollerance: <span id="allowedDistanceDisplay"></span></label></div>
-            <div><input class="slider" type="range" min="1" max="2" value="1.1" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
-            <div id="allowedDistanceInstructions" class="sub-label">How much further is someone willing to travel to get to a supermarket relative to the nearest fast food?</div>
+            <div><label for="allowedDistance" class="main-label">Transit subsidy: <span id="allowedDistanceDisplay"></span></label></div>
+            <div><input class="slider" type="range" min="1" max="2" value="1.0" step="0.05" id="allowedDistance" aria-describedby="allowedDistanceInstructions"></div>
+            <div id="allowedDistanceInstructions" class="sub-label">Invest in transit to change how much further is someone willing to travel to get to a supermarket relative to the nearest fast food.</div>
           </div>
         </div>
       </div>
     </section>
     <footer id="footerDetails">
       <p>Want more cool ideas and tools at the intersection of data science, data visualization, and game design? <a href="https://tinyletter.com/SamPottinger">Sign up for my low volume mailing list</a>!</p>
-      <p>Made by <a href="https://gleap.org">Sam Pottinger</a> (data last updated December, 2022). By using this you agree to the <a href="https://github.com/sampottinger/sf_food_sim/blob/main/LICENSE">MIT License</a>.</p>
+      <p>Made by <a href="https://gleap.org">Sam Pottinger</a> (data last updated Jan 2023). By using this you agree to the <a href="https://github.com/sampottinger/sf_food_sim/blob/main/LICENSE">MIT License</a>.</p>
       <p>Uses fast food and supermarkets from <a href="https://www.openstreetmap.org">OpenStreetMap under the ODBL license</a>, filtering only for those with non-empty names to remove potential erroneous data. If the distance between a supermarket / fast food option is less than 0.1 miles, the supermarket is "chosen" by the "house" (ring) regardless of distance tollerance. Distances are straight line (as the crow flies) distance.</p>
       <p><a href="https://github.com/sampottinger/sf_food_sim">Open source code and data available</a> (MIT, ODBL). Simulation uses <a href="http://proj4js.org/">proj4js under the MIT license</a> as well as <a href="https://www.papaparse.com/">PapaParse under the MIT license</a>. <a href="https://stackoverflow.com/help/licensing">Some StackOverflow used under the CC-BY-SA license</a> (<a href="https://stackoverflow.com/questions/2450954">superliminary</a>, <a href="https://stackoverflow.com/questions/14560999">Nathan Lippi</a>). Uses <a href="https://colorbrewer2.org">ColorBrewer</a>.</p>
       <p>Preprocessing in <a href="https://www.python.org/">Python</a> uses <a href="https://jupyter.org/">Jupyter under the BSD license</a> and <a href="https://github.com/shapely/shapely">Shapely under the BSD license</a>.</p>
@@ -132,10 +159,10 @@
     </footer>
   </body>
 
-  <script type="text/javascript" src="./proj4js.js#cache202205201"></script>
-  <script type="text/javascript" src="./papaparse.min.js#cache202205201"></script>
-  <script type="text/javascript" src="./geo_util.js#cache202205201"></script>
-  <script type="text/javascript" src="./model.js#cache202212311"></script>
-  <script type="text/javascript" src="./viz.js#cache202212311"></script>
+  <script type="text/javascript" src="./proj4js.js?v=20230104"></script>
+  <script type="text/javascript" src="./papaparse.min.js?v=20230104"></script>
+  <script type="text/javascript" src="./geo_util.js?v=20230104"></script>
+  <script type="text/javascript" src="./model.js?v=20230104"></script>
+  <script type="text/javascript" src="./viz.js?v=20230104"></script>
 
 </html>
