@@ -16,10 +16,10 @@
           <div class="step" id="step1">
             <div class="advisor">
               <div class="image"><img src="./things/building.png" alt="Picture of a building."></div>
-              <div class="message"><p>Hello new recruit! Welcome. As you know, cities impact our health in lots of ways and this includes how they provide access to nutrition.</p><p>Consider <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/go-to-the-atlas/" target="_blank">food deserts</a> which are <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/documentation/" target="_blank">low income areas 1 mile or more away from healthy affordable food</a>. These regions are important for public health because, for residents in these areas, it can be challenging to maintain a good diet. Our team is trying to chip away at food deserts using urban planning.</p></div>
+              <div class="message"><p>Hello new recruit! Welcome. Cities impact our health in lots of ways and this includes how they provide access to nutrition.</p><p>Consider <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/go-to-the-atlas/" target="_blank">food deserts</a> which are <a href="https://www.ers.usda.gov/data-products/food-access-research-atlas/documentation/" target="_blank">low income areas 1 mile or more away from healthy affordable food</a>. These regions are important for public health because, for residents in these areas, it can be challenging to maintain a good diet. Our team is trying to chip away at food deserts using urban planning.</p></div>
             </div>
             <div class="step-controls">
-              <a href="#toolSection" id="skipGuideLink">Skip Guide</a> / <a href="#step2" current="step1" class="next first">Guide: Next >></a>
+              <a href="#toolSection" id="skipGuideLink">Skip Guide</a> / <a href="#step2" current="step1" class="next first">Start Game >></a>
             </div>
           </div>
           <div class="step later" id="step2">
@@ -153,14 +153,19 @@
       </div>
     </section>
     <footer id="footerDetails">
+      <p>
+        <audio id="bg-music" controls="controls" loop>
+          <source src="./music/background.mp3" type="audio/mpeg">
+        </audio>
+      </p>
       <p>Want more cool ideas and tools at the intersection of data science, data visualization, and game design? <a href="https://tinyletter.com/SamPottinger">Sign up for my low volume mailing list</a>!</p>
       <p>Made by <a href="https://gleap.org">Sam Pottinger</a> (data last updated Jan 2023). By using this you agree to the <a href="https://github.com/sampottinger/sf_food_sim/blob/main/LICENSE">MIT License</a>. Built in part for the <a href="https://www.coursera.org/specializations/game-design">California Institute for the Arts Game Design Sequence</a> final course.</p>
-      <p>Uses fast food and supermarkets from <a href="https://www.openstreetmap.org">OpenStreetMap under the ODBL license</a>, filtering only for those with non-empty names to remove potential erroneous data. If the distance between a supermarket / fast food option is less than 0.1 miles, the supermarket is "chosen" by the "house" (ring) regardless of distance tollerance. Distances are straight line (as the crow flies) distance.</p>
+      <p>Uses fast food and supermarkets from <a href="https://www.openstreetmap.org">OpenStreetMap under the ODBL license</a>, filtering only for those with non-empty names to remove potential erroneous data. If the distance between a supermarket / fast food option is less than 0.1 miles, the supermarket is "chosen" by the "house" (ring) regardless of distance tollerance. Distances are straight line (as the crow flies) distance. Transit subsidy is how much further someone would be willing to go to a supermarket relative to nearest fast food option.</p>
       <p><a href="https://github.com/sampottinger/sf_food_sim">Open source code and data available</a> (MIT, ODBL). Simulation uses <a href="http://proj4js.org/">proj4js under the MIT license</a> as well as <a href="https://www.papaparse.com/">PapaParse under the MIT license</a>. <a href="https://stackoverflow.com/help/licensing">Some StackOverflow used under the CC-BY-SA license</a> (<a href="https://stackoverflow.com/questions/2450954">superliminary</a>, <a href="https://stackoverflow.com/questions/14560999">Nathan Lippi</a>). Uses <a href="https://colorbrewer2.org">ColorBrewer</a>.</p>
       <p>Preprocessing in <a href="https://www.python.org/">Python</a> uses <a href="https://jupyter.org/">Jupyter under the BSD license</a> and <a href="https://github.com/shapely/shapely">Shapely under the BSD license</a>.</p>
       <p>By using this page you agree to <a href="https://gleap.org/tos_privacy">terms and conditions / privacy policy</a>.</p>
       <p>Only intends to include SF. Of course, supermarkets exist to the south of the city. However, note that SF MUNI, the city transit system, <a href="https://www.sfmta.com/sites/default/files/pressreleases/2015/Muni%20Map%202015.pdf">does not necessarily extend directly into those areas</a> such that transfer between systems would be needed.</p>
-      <p>Avatar graphics <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> from <a href="https://v-ktor.itch.io/pixel-art-portrait-generator">V-ktor</a>. Limited other graphics used with license from <a href="https://www.dreamstime.com/pixel-art-set-modern-various-buildings-vector-colorful-image171325863">Owncham</a> and <a href="https://www.dreamstime.com/pixel-art-style-icons-collection-white-background-image192127406">Greyjj</a>. Music under CC-BY-NC 3.0 from <a href="http://ccmixter.org/files/texasradiofish/64682">texasradiofish and billraydrums</a>.</p>
+      <p>Avatar graphics <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> from <a href="https://v-ktor.itch.io/pixel-art-portrait-generator">V-ktor</a>. Limited other graphics used with license from <a href="https://www.dreamstime.com/pixel-art-set-modern-various-buildings-vector-colorful-image171325863">Owncham</a> and <a href="https://www.dreamstime.com/pixel-art-style-icons-collection-white-background-image192127406">Greyjj</a>. Music under <a href="https://creativecommons.org/licenses/by-nc/3.0/">CC-BY-NC 3.0</a> from <a href="http://ccmixter.org/files/texasradiofish/64682">texasradiofish and billraydrums</a>.</p>
     </footer>
   </body>
 
@@ -168,6 +173,6 @@
   <script type="text/javascript" src="./papaparse.min.js?v=20230104"></script>
   <script type="text/javascript" src="./geo_util.js?v=20230104"></script>
   <script type="text/javascript" src="./model.js?v=20230104"></script>
-  <script type="text/javascript" src="./viz.js?v=20230106"></script>
+  <script type="text/javascript" src="./viz.js?v=20230107"></script>
 
 </html>

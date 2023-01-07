@@ -757,6 +757,12 @@ function showControls(presenter) {
 }
 
 
+function startMusic() {
+  const bgMusic = document.getElementById("bg-music")
+  bgMusic.play();
+}
+
+
 /**
  * Start the tutorial sequence.
  *
@@ -765,8 +771,14 @@ function showControls(presenter) {
 function initTutorial(presenter) {
 
   const extraActions = {
-    "step1": () => { hideAllHints(presenter); },
-    "step2": () => { hideAllHints(presenter); showMap(presenter); },
+    "step1": () => {
+      hideAllHints(presenter);
+    },
+    "step2": () => {
+      startMusic();
+      hideAllHints(presenter);
+      showMap(presenter);
+    },
     "step3": () => {
       hideAllHints(presenter);
       enableSupermarkets(presenter);
@@ -811,6 +823,7 @@ function initTutorial(presenter) {
     enableFastFood(presenter);
     showSummary(presenter);
     showControls(presenter);
+    startMusic();
   }
 
   document.querySelectorAll(".previous").forEach(addListeners);
