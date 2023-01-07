@@ -157,6 +157,10 @@ h1 {
   padding-right: 10px;
 }
 
+#musicLabel {
+  font-weight: bold;
+}
+
 #skip-guide-msg {
   display: none;
 }

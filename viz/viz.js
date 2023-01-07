@@ -353,16 +353,16 @@ class Presenter {
     
     if (totalSpend > 100) {
       document.getElementById("statusEmoji").innerHTML = "Oops! You went over budget.";
-      document.getElementById("goalImage").src = "./people/budget.png";
-      document.getElementById("goalImage").alt = "Picture of dollar bill with red alert icon.";
+      document.getElementById("goalImage").src = "./things/fail.jpeg";
+      document.getElementById("goalImage").alt = "Picture of an x.";
     } else if (percentSuperMarket >= 80) {
       document.getElementById("statusEmoji").innerHTML = "Success!";
-      document.getElementById("goalImage").src = "./people/ribbon.png";
-      document.getElementById("goalImage").alt = "Picture of a blue ribbon.";
+      document.getElementById("goalImage").src = "./things/trophy.jpeg";
+      document.getElementById("goalImage").alt = "Picture of a trophy.";
     } else {
       document.getElementById("statusEmoji").innerHTML = "Keep going!";
-      document.getElementById("goalImage").src = "./people/easel.png";
-      document.getElementById("goalImage").alt = "Picture of a graph going up and to the right.";
+      document.getElementById("goalImage").src = "./things/info.jpeg";
+      document.getElementById("goalImage").alt = "Picture of an i in a circle.";
     }
   }
 
@@ -758,6 +758,15 @@ function showControls(presenter) {
 
 
 /**
+ * Start the background music.
+ */
+function startMusic() {
+  const bgMusic = document.getElementById("bgMusic");
+  bgMusic.play();
+}
+
+
+/**
  * Start the tutorial sequence.
  *
  * @param presenter The presenter to manipulate.
@@ -765,8 +774,14 @@ function showControls(presenter) {
 function initTutorial(presenter) {
 
   const extraActions = {
-    "step1": () => { hideAllHints(presenter); },
-    "step2": () => { hideAllHints(presenter); showMap(presenter); },
+    "step1": () => {
+      hideAllHints(presenter);
+    },
+    "step2": () => {
+      startMusic();
+      hideAllHints(presenter);
+      showMap(presenter);
+    },
     "step3": () => {
       hideAllHints(presenter);
       enableSupermarkets(presenter);
@@ -811,6 +826,7 @@ function initTutorial(presenter) {
     enableFastFood(presenter);
     showSummary(presenter);
     showControls(presenter);
+    startMusic();
   }
 
   document.querySelectorAll(".previous").forEach(addListeners);
