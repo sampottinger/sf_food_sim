@@ -757,8 +757,11 @@ function showControls(presenter) {
 }
 
 
+/**
+ * Start the background music.
+ */
 function startMusic() {
-  const bgMusic = document.getElementById("bg-music")
+  const bgMusic = document.getElementById("bgMusic");
   bgMusic.play();
 }
 
