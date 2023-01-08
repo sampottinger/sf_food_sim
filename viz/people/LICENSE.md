@@ -1,0 +1,1 @@
+[Pixel art portrait generator](https://v-ktor.itch.io/pixel-art-portrait-generator) by [V-ktor](https://v-ktor.itch.io) under the [CC-BY-4.0 License](https://creativecommons.org/licenses/by/4.0/).
