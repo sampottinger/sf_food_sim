@@ -542,13 +542,9 @@ function isValid(target) {
  * @param target The array whose order should be randomized.
  * @returns Array with all of the same elements as the input array but returned
  *    in a new order.
- * @source stackoverflow.com/questions/2450954
  */
 function shuffle(target) {
-  return target
-    .map(value => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value)
+  return target.map((x) => x).sort((a, b) => Math.random() - 0.5)
 }
 
 
