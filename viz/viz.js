@@ -224,7 +224,12 @@ class Presenter {
     self._ctx.save();
     self._ctx.strokeStyle = color;
     self._ctx.lineWidth = 2;
-    self._ctx.strokeRect(x - radius, y - radius, radius * 2, radius * 2);
+    self._ctx.strokeRect(
+      Math.round(x - radius),
+      Math.round(y - radius),
+      Math.round(radius * 2),
+      Math.round(radius * 2),
+    );
     self._ctx.restore();
   }
 
@@ -344,8 +349,8 @@ class Presenter {
     self._supermarketBarDisplay.style.width = supermarketWidth;
     self._fastFoodBarDisplay.style.width = fastFoodWidth;
     
-    const transitSpend = Math.pow((self._allowedTolleranceSlider.value - 1) * 50, 1.3);
-    const constructionSpend = self._constructionCost * 30;
+    const transitSpend = Math.pow((self._allowedTolleranceSlider.value - 1) * 30, 1.3);
+    const constructionSpend = self._constructionCost * 20;
     const totalSpend = constructionSpend + transitSpend;
     document.getElementById("percentSpent").innerHTML = Math.round(totalSpend) + "%";
     document.getElementById("transitPercent").innerHTML = Math.round(transitSpend) + "%";
